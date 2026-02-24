@@ -4,5 +4,21 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
   
+  <!-- 서블릿 지정 -->
+  <!-- <servlet>
+    <servlet-name>test</servletname>
+    <servlet-class>TestServlet</servlet-class>
+  </servlet> -->
+  <!-- 서블릿 맵핑 -->
+  <!-- <servlet-mapping>
+    <servlet-name>test</servletname>
+    <url-pattern>test2.do</url-pattern>
+  </servlet-mapping> -->
+
 </web-app>

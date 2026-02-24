@@ -5,7 +5,46 @@
     <meta charset="utf-8">
     <title>display 속성</title>
     <style>
+        /* CSS display 속성 
+         : 웹 상에서 태그를 표시하는 방법을 결정(inline, block)
+         display 속성은 기본 표시 방법은 다른 방법을 제시하고, 표시함. 
 
+         -display 속성 값
+         1. inline : inline 방식으로 표현
+         2. block : block 방식으로 표현
+         3. inline-block : inline방식과 block방식을 혼합
+         4. none : 화면에 출력하지 않겠다. 
+        */
+        ul {
+            list-style: none;
+        }
+
+        .block1 li,
+        .inline1 li {
+            border: 1px solid red;
+            padding: 3px;
+        }
+
+        /* .inline1 li 에 display 설정 */
+        .inline1 li {
+            display: inline-block;
+        }
+
+        .box1,
+        .box2 {
+            width: 150px;
+            height: 50px;
+            border: 1px solid red;
+            display: inline-block;
+        }
+
+        p.blocktext strong {
+            display: block;
+        }
+
+        .box2 {
+            display: none;
+        }
     </style>
 </head>
 

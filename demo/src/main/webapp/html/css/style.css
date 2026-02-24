@@ -1,0 +1,67 @@
+/* CSS 주석처리 */
+/* 전체 전택자 : 웹 문서 전체에 대한 설정을 위해서 사용하는 선택자 */
+* {}
+
+/* 태그 이름 선택자 : 태그 이름 그 자체로 특정 요소를 선택 */
+table {
+    /* border-collapse 속성 : 기본 seperate, collapse(하나로 합쳐줘요.) */
+    border-collapse: collapse;
+    /* border-width: 3px; */
+    /* 외곽선(border)의 두께*/
+    /* border-style: solid; */
+    /* border의 스타일 : dashed (.--.--.--), dotted(......)*/
+    /* border-color: black; */
+    /* border의 색상 */
+    /* 위에 있는 border에 대한 두께, 스타일, 색상을 합친 속성 */
+    border: 3px solid black;
+    width: 80%;
+    /* 표시되는 화면에 80% 크기를 가지겠다. */
+    text-align: center;
+}
+
+tr {
+    height: 24px;
+    /* tr의 높이 설정*/
+    font-size: 14px;
+    /* 글자크기 */
+}
+
+tr:hover {
+    color: white;
+    font-weight: bold;
+    background-color: aqua;
+    cursor: pointer;
+}
+
+th {
+    height: 25px;
+    font-size: 16px;
+    background-color: #ddaff1;
+}
+
+/* id 선택자 : id 선택자는 요소의 id값 앞에 #을 붙여서 사용. */
+#id {
+    width: 15%;
+}
+
+#name {
+    width: 10%;
+}
+
+#major {
+    width: 25%;
+}
+
+#email {
+    width: 50%;
+}
+
+/* class 선택자 : 이 선택자는 요소의 클래스 명 앞에 .을 붙여서 사용 */
+.odd {
+    background-color: beige;
+}
+
+
+/* 
+선택자 우선 순위(내림차순) : id -> class -> tag -> * 
+*/

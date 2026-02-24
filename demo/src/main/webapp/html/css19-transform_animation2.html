@@ -20,7 +20,8 @@
         }
 
         .box3 {
-            transition: width 0.5s linear 0.2s;
+            /* 1s는 딜레이 */
+            transition: width 0.5s linear 1s;
         }
 
         .box2:hover,
@@ -42,6 +43,7 @@
             transition: width 1s, height 1s;
         }
 
+        /* 기본 : 변화의 크기 상관없이 동시에 끝나게 처리 */
         .box10 {
             transition-timing-function: ease;
         }
@@ -50,14 +52,17 @@
             transition-timing-function: linear;
         }
 
+        /* 처음에 느리게 변환되다가 나중에 빨라짐 */
         .box30 {
             transition-timing-function: ease-in;
         }
 
+        /* 처음에 빠르게 변환되다가 나중에 느려짐 */
         .box40 {
             transition-timing-function: ease-out;
         }
 
+        /* 처음에 빠르게 변환되다가 느려지다 빨라짐 */
         .box50 {
             transition-timing-function: ease-in-out;
         }

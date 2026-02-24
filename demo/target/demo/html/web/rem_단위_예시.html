@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>rem 단위 예시 </title>
+    <style>
+        p {
+            font-size: 1em;
+            line-height: 1.5em;
+        }
+
+        .box1 {
+            font-size: 20px;
+        }
+
+        .box1 p {
+            font-size: 1rem;
+            line-height: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <p> p 태그 내부의 폰트 크기는 1em입니다. 실제 웹 사이트에서 16px의 크기를 나타냅니다.
+    </p>
+    <div class="box1">
+        <p>
+            현재 box1의 폰크 크기를 20px 로 재설정 후 box1 내부에 있는 p 태그 내부 폰트 크기를 1rem으로 설정하면, box1의 요소와 무관하게 1rem은 16px입니다.
+        </p>
+    </div>
+</body>
+
+</html>

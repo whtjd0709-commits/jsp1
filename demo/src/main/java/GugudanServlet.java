@@ -7,13 +7,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 /*
-    서블릿의 특징
-    1. 동적 웹 어플리케이션 컴포넌트 (순수 자바 코드 사용)
-    2. 확장자가 .java
-    3. 클라이언트의 요청에 동적으로 동작하고, 응답은 html을 이용
-    4. java thread를 이용해서 동작하게 됨.
-    5. MVC 패턴에서 컨트롤러의 역할을 함.
+서블릿의 특징
+1. 동적 웹 어플리케이션 컴포넌트(순수 자바 코드 사용)
+2. 확장자가 .java
+3. 클라이언트의 요청에 동적으로 동작하고, 응답은 html을 이용.
+4. java thread를 이용해서 동작하게 됨. 
+5. MVC 패턴에서 Controller의 역할을 함. 
 */
 
 @WebServlet("/gugudan.do")

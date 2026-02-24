@@ -1,47 +1,68 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-    <meta charset="UTF-8">
-    <title>HTML5 미디어 작업</title>
+    <meta charset="utf-8">
+    <title>HTML5 Media 작업</title>
 </head>
+
 <body>
-    <h1>HTML5 미디어 작업</h1>
-    <p>HTML5에서는 오디오와 비디오를 쉽게 삽입할 수 있는 태그가 도입되었습니다.</p>
-    <!-- HTML5 기본적으로 지원하는 포맷 : mp3, mp4, ogg -->
+    <!-- 
+            멀티 미디어 작업 - 영상, 음성, 이미지 및 기타 다양한 미디어 작업
 
+            비디오 포맷 : MPEG(.mpg,mpeg), AVI(.avi), WMV(.wmv), Quick Time(.mov), 
+                    RealVideo(.rm, ram), Flash(.swf, flv), Ogg(.ogg), WebM(.webm)
+                    MPEG4(.mp4)
+
+            HTML5 기본적으로 지원하는 포맷 : MP4, WEBM, OGG
+        -->
     <!-- Video -->
-
-    <h2>비디오 태그</h2>
-    <video width="320" height="240" controls> <!-- controls : 재생 컨트롤러 표시 -->
+    <h2>Video 태그</h2>
+    <!-- controls : 제어 콘솔 생성 -->
+    <video width="320" height="240" controls>
         <source src="./video/mov_bbb.mp4" type="video/mp4"> <!-- 1 -->
         <source src="./video/mov_bbb.ogv" type="video/ogg"> <!-- 2 -->
-        브라우저가 비디오 태그를 지원하지 않습니다. <!-- 대체 텍스트 -->
-    </video> 
-
-    <video width="320" height="240" autoplay muted loop> <!-- autoplay : 자동재생, muted : 음소거, loop : 반복재생 -->
-        <source src="./video/mov_bbb.mp4" type="video/mp4"> <!-- 1 -->
-        <source src="./video/mov_bbb.ogv" type="video/ogg"> <!-- 2 -->
-        브라우저가 비디오 태그를 지원하지 않습니다. <!-- 대체 텍스트 -->
+        브라우저가 video태그를 지원하지 않는 상황입니다. <!-- 3 -->
     </video>
 
+    <!-- autoplay : 자동 재생기능 하지만 요즘 브라우저에서는 동작하지 않는 경우 많음. -->
+    <video width="320" height="240" controls autoplay>
+        <source src="./video/mov_bbb.mp4" type="video/mp4"> <!-- 1 -->
+        <source src="./video/mov_bbb.ogv" type="video/ogg"> <!-- 2 -->
+        브라우저가 video태그를 지원하지 않는 상황입니다. <!-- 3 -->
+    </video>
+    <!-- 단, autoplay에 muted(음소거)를 같이 사용하면 자동 재생이 됨.(소리는 제거된 상태로 재생) -->
+    <video width="320" height="240" autoplay muted>
+        <source src="./video/mov_bbb.mp4" type="video/mp4"> <!-- 1 -->
+        <source src="./video/mov_bbb.ogv" type="video/ogg"> <!-- 2 -->
+        브라우저가 video태그를 지원하지 않는 상황입니다. <!-- 3 -->
+    </video>
 
-    <!-- Audio -->
-    <h2>오디오 태그</h2>
-    <audio controls>
-        <source src="./audio/sample1.mp3" type="audio/mpeg"> <!-- 1 -->
-        <source src="./audio/sample1.ogg" type="audio/ogg"> <!-- 2 -->
-        브라우저가 오디오 태그를 지원하지 않습니다. <!-- 대체 텍스트 -->
+    <hr>
+    <h2>Audio 태그</h2>
+    <!-- mp3(Mpeg), ogg용 오디오 -->
+    <audio controls autoplay>
+        <source src="audio/horse.mp3" type="audio/mpeg">
+        <source src="audio/horse.ogv" type="audio/ogg">
+        audio태그를 당신의 브라우저는 지원하지 않습니다.
     </audio>
 
     <hr>
+    <h2>plug-ins : 브라우저에서 확장해서 지원하는 기능</h2>
+    <!-- Object 태그 -->
+    <object width="100%" height="100%" data="web/snippet.html"></object>
+    <object width="100%" height="100%" data="video/mov_bbb.mp4"></object>
+
+    <hr>
     <h2>youtube 영상 보기</h2>
-    <!--
-        frame 태그 종류 : iframe, object, embed
-        youtube 영상 삽입 방법 : iframe 사용
+    <!-- 
+        frame 태그 종류들 중에 남아있는 태그 iframe 태그를 이용한 Youtube 영상 가져오기
     -->
-<iframe width="700" height="450" src="https://www.youtube.com/embed/C3GouGa0noM?list=RDC3GouGa0noM"
- title="GODS (ft. 뉴진스) (공식 뮤직 비디오) | 2023 월드 챔피언십 주제곡 - 리그 오브 레전드"
-frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe width="640" height="480" src="https://www.youtube.com/embed/zFs8CnOeAA4?list=RDzFs8CnOeAA4"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+    <hr>
 
 </body>
+
 </html>

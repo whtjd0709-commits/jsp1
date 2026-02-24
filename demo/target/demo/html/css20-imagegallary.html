@@ -2,6 +2,8 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         div.gallery {
             border: 1px solid #ccc;
@@ -11,6 +13,7 @@
             border: 1px solid #777;
         }
 
+        /* 이미지 사이즈를 제어하는 100% */
         div.gallery img {
             width: 100%;
             height: auto;
@@ -21,8 +24,7 @@
             text-align: center;
         }
 
-
-
+        /* box-sizing 는 컨텐츠의 크기를 지정하는 방법 */
         * {
             box-sizing: border-box;
         }
@@ -31,8 +33,10 @@
             => box 태그 사이즈에 맞춰서
             */
 
+        /* 반응형 설정 */
         .responsive {
             padding: 0 6px;
+            /* 0:상하 , 6px 좌우 */
             float: left;
             width: 24.99999%;
         }
@@ -59,12 +63,23 @@
             ==================================
             }
             */
+        /* media 쿼리 설정 */
+        @media only screen and (max-width: 700px) {
+            .responsive {
+                width: 49.99999%;
+                margin: 6px 0;
+            }
 
-        .clearfix:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
+            @media only screen and (max-width: 500px) {
+                .responsive {
+                    width: 100%;
+                }
+
+                .clearfix:after {
+                    content: "";
+                    display: table;
+                    clear: both;
+                }
     </style>
 </head>
 
@@ -75,8 +90,8 @@
 
     <div class="responsive">
         <div class="gallery">
-            <a target="_blank" href="../images/img_5terre.jpg">
-                <img src="../images/img_5terre.jpg" alt="Cinque Terre" width="600" height="400">
+            <a target="_blank" href="./images/img_5terre.jpg">
+                <img src="./images/img_5terre.jpg" alt="Cinque Terre" width="600" height="400">
             </a>
             <div class="desc">해안가 절벽 이미지</div>
         </div>
@@ -85,8 +100,8 @@
 
     <div class="responsive">
         <div class="gallery">
-            <a target="_blank" href="../images/img_forest.jpg">
-                <img src="../images/img_forest.jpg" alt="Forest" width="600" height="400">
+            <a target="_blank" href="images/img_forest.jpg">
+                <img src="images/img_forest.jpg" alt="Forest" width="600" height="400">
             </a>
             <div class="desc">숲속의 다리</div>
         </div>
@@ -94,8 +109,8 @@
 
     <div class="responsive">
         <div class="gallery">
-            <a target="_blank" href="../images/img_lights.jpg">
-                <img src="../images/img_lights.jpg" alt="Northern Lights" width="600" height="400">
+            <a target="_blank" href="./images/img_lights.jpg">
+                <img src="./images/img_lights.jpg" alt="Northern Lights" width="600" height="400">
             </a>
             <div class="desc">북극의 오로라</div>
         </div>

@@ -1,24 +1,60 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-        <title>CSS 특성들</title>
-        <style>
-            h1{background-color: yellow;}
-            h1{background-color: red;}
-            div[id=a] {background-color: blue;}
-            #a{background-color: yellow;}
-        </style>
-    </head>
-    <body>
-        <h1>heading 1</h1>
-        <p>동일한 경우 순서대로 나중에 사용된 CSS가 최종 적용됨.</p>
-        <hr>
-        <div>
-            <h2>CSS 특성 계산2</h2>
-            <div id="a">div 태그입니다.</div>
-            <p>div#a는 css우선순위 값이 101, div[id=a]는 10을 가짐</p>
-        </div>
-    </body>
+<html lang="ko">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>CSS 특성들</title>
+    <style>
+        h1 {
+            background-color: yellow;
+        }
+
+        h1 {
+            background-color: red;
+        }
+
+        /* css에 우선 순위 값 */
+        div#a {
+            background-color: green;
+        }
+
+        /*101 = id(100) + tag(1)*/
+        div[id=a] {
+            background-color: blue;
+        }
+
+        /* 10 */
+        #a {
+            background-color: yellow;
+        }
+
+        /* 100 */
+        .intro {
+            background-color: brown;
+        }
+
+        div div {
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>heading 1</h1>
+    <p>동일한 경우 순서대로 나중에 사용된 CSS가 최종 적용됨.</p>
+    <hr>
+    <div>
+        <h2>CSS 특성 계산2</h2>
+        <div id="a">div 태그입니다.</div>
+        <p>div#a는 css우선순위 값이 101, div[id=a]는 10을 가짐</p>
+    </div>
+    <hr>
+    <div>
+        <h2>CSS 특성 계산3</h2>
+        <div class="intro">div 태그입니다.</div>
+        <p>클래스는 10을 가지고 있고, 일반 태그는 1을 가집니다.</p>
+    </div>
+</body>
+
 </html>

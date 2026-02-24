@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #rcorners1 {
+            border-radius: 25px;
+            /* 백그라운드 */
+            background: #73AD21;
+            padding: 20px;
+            width: 200px;
+            height: 150px;
+        }
+
+        #rcorners2 {
+            border-radius: 25px;
+            /* border에 색상 처리 */
+            border: 2px solid #73AD21;
+            padding: 20px;
+            width: 200px;
+            height: 150px;
+        }
+
+        #rcorners3 {
+            border-radius: 25px;
+            background: url(../images/paper.gif);
+            background-position: left top;
+            background-repeat: repeat;
+            padding: 20px;
+            width: 200px;
+            height: 150px;
+        }
+
+        #rcorners11 {
+            border-radius: 15px 50px 30px 5px;
+            background: #73AD21;
+            padding: 20px;
+            width: 200px;
+            height: 150px;
+        }
+
+        #rcorners22 {
+            border-radius: 15px 50px 30px;
+            background: #73AD21;
+            padding: 20px;
+            width: 200px;
+            height: 150px;
+        }
+
+        #rcorners33 {
+            border-radius: 15px 50px;
+            background: #73AD21;
+            padding: 20px;
+            width: 200px;
+            height: 150px;
+        }
+
+        #rcorners44 {
+            border-radius: 15px;
+            background: #73AD21;
+            padding: 20px;
+            width: 200px;
+            height: 150px;
+        }
+
+        #rcorners100 {
+            border-radius: 50px / 15px;
+            background: #73AD21;
+            padding: 20px;
+            width: 200px;
+            height: 150px;
+        }
+
+        #rcorners200 {
+            border-radius: 15px / 50px;
+            background: #73AD21;
+            padding: 20px;
+            width: 200px;
+            height: 150px;
+        }
+
+        #rcorners300 {
+            border-radius: 50%;
+            background: #73AD21;
+            padding: 20px;
+            width: 200px;
+            height: 150px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>border-radius 속성</h1>
+
+    <p>백그라운드를 이용한 라운디드 설정:</p>
+    <p id="rcorners1">라운디드 코너 설정!</p>
+    <p>경계(border)를 이용한 라운디드 설정:</p>
+    <p id="rcorners2">border를 이용한 라운디드 설정!</p>
+    <p>background image에 대한 라운디드 설정:</p>
+    <p id="rcorners3">background-image의 라운디드 설정!</p>
+
+    <hr>
+
+    <p>Four values - border-radius: 15px 50px 30px 5px:</p>
+    <p id="rcorners11"></p>
+
+    <p>Three values - border-radius: 15px 50px 30px:</p>
+    <p id="rcorners22"></p>
+
+    <p>Two values - border-radius: 15px 50px:</p>
+    <p id="rcorners33"></p>
+
+    <p>One value - border-radius: 15px:</p>
+    <p id="rcorners44"></p>
+
+    <hr>
+    <h1>The border-radius Property</h1>
+
+    <p>Elliptical border - border-radius: 50px / 15px:</p>
+    <p id="rcorners100"></p>
+
+    <p>Elliptical border - border-radius: 15px / 50px:</p>
+    <p id="rcorners200"></p>
+
+    <p>Ellipse border - border-radius: 50%:</p>
+    <p id="rcorners300"></p>
+
+
+</body>
+
+</html>

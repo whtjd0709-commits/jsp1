@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>네비게이션 구현</title>
+    <style>
+        div {
+            height: 20%;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        .virtical ul {
+            width: 25%;
+            background-color: slateblue;
+            height: 100%;
+            position: relative;
+            overflow: auto;
+        }
+
+        .virtical li a {
+            display: block;
+            color: #ffffff;
+            padding: 6px 16px;
+            text-decoration: none;
+        }
+
+        .virtical li a.active {
+            background-color: slateblue;
+            color: white;
+        }
+
+        .virtical li a:hover:not(.active) {
+            background-color: #555;
+            color: white;
+        }
+
+        .horizontal ul {
+            overflow: hidden;
+            background-color: darkorange;
+        }
+
+        .horizontal li {
+            float: left;
+            border-right: 1px solid #555;
+        }
+
+        .horizontal li:last-child {
+            border-right: none;
+        }
+
+        .horizontal li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 10px 16px;
+            text-decoration: none;
+        }
+
+        .horizontal a:hover:not(.active) {
+            background-color: #555;
+        }
+
+        .active {
+            background-color: burlywood;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>네비게이션</h2>
+    <div>
+        <h3>1. ul을 이용한 네비게이션</h3>
+        <ul>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+        <p>네비게이션 테스트</p>
+    </div>
+    <div class="virtical">
+        <h3>2. 수직 네비게이션</h3>
+        <ul>
+            <li><a class="active" href="#home">HOME</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+        <p>네비게이션 테스트</p>
+    </div>
+    <div class="horizontal">
+        <h3>3. 수평 네비게이션</h3>
+        <ul>
+            <li><a class="active" href="#home">HOME</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+        <p>네비게이션 테스트</p>
+    </div>
+
+</body>
+
+</html>

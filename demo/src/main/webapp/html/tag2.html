@@ -1,13 +1,41 @@
 <!DOCTYPE html>
-<html>
-    <meta charset="UTF-8">
-    <head>
-        <title>tag2 페이지</title>
-    </head>
-    <body>
-        <h1>tag2 페이지에 오신 것을 환영합니다.</h1>
-        <p>이 페이지는 tag1 페이지에서 링크를 통해 이동한 페이지입니다.</p>
-        <a href="tag1.html">tag1 페이지로 돌아가기</a>
-        <a href="htmltest.html">HTML 테스트 페이지로 이동</a>
-    </body>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>image 태그, a 태그 연습</title>
+</head>
+
+<body>
+    <!-- 페이지 이미지를 넣을 때 사용하는 태그는 img -->
+    <!-- img 태그는 속성(Attribute) : src, alt -->
+    <!--
+        width : 이미지 폭을 지정(px 또는 %)
+        height : 이미지 높이를 지정(px 또는 %)
+        src : 이미지가 있는 위치을 지정
+        alt : 이미지로드 실패시 표시할 내용을 작성. 
+    -->
+    <img src="images/images.webp" width="200px" border="1" alt="첫번째 이미지">
+    <br>
+    <img src="images/image1.jpg" width="200px" border="1" alt="두번째 이미지">
+    <img src="images/image2.jpg" width="200px" border="1" alt="세번째 이미지">
+
+    <!--
+       a 태그(anchor) : 문서 또는 웹페이지를 연결하는 연할을 하는 태그. 
+       속성 
+       - href : 연결할 문서 위치 또는 웹페이지를 가리키고 있습니다.
+       - target : 연결한 문서를 여는 방식(잘 사용하지 않아요) 
+                self(기본), _blank 새로운 탭에서 연결
+    -->
+    <br>
+    <!-- 
+        href에서 tag1.html은 상대 경로 접근한 경우.(tag2.html과 같은 디렉터리에 있어서) 
+        절대 경로를 사용하는 경우에는 "/demo/html/tag1.html" 또는 
+            "http://localhost:8080/demo/html/tag1.html" 로 표시.
+    -->
+    <a href="tag1.html">tag1 페이지로 이동</a>
+    <a href="https://www.naver.com" target="_blank">네이버 페이지로 이동</a>
+
+</body>
+
 </html>

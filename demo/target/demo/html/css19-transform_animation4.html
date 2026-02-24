@@ -23,14 +23,19 @@
             animation: changecolor 5s;
         }
 
+        /* @Keyframes 을 사용하여 변화될 애니메이션을 지정 */
         @keyframes changecolor {
-            0% {
+
+            /* 0~10% #FC0 색상으로 배경 변경, 글자는 흰색 */
+            10% {
                 background-color: #FC0;
+                /* 시작위치 */
                 top: 0px;
                 left: 0px;
                 color: white
             }
 
+            /* 10~ 25% 배경은 #3CF, 글자는 red, 위치 100px,100px  */
             25% {
                 background-color: #3CF;
                 top: 100px;
@@ -38,6 +43,7 @@
                 color: red
             }
 
+            /* 25 ~ 50%  */
             50% {
                 background-color: #C96;
                 top: 200px;
@@ -45,6 +51,7 @@
                 color: blue
             }
 
+            /* 50% ~ 75% */
             75% {
                 background-color: #0CF;
                 top: 300px;
@@ -70,13 +77,15 @@
         }
 
         .animate10 {
+            /* [애니메이션 설정을 지정] */
             animation-name: jump;
             /* 설정 된 애니메이션 이름 */
-            animation-duration: 2s;
+            animation-duration: 5s;
             /* 3초 동안 애니메이션 실행(여기 숫자가 짧으면 애니메이션이 빨라집니다. 반대로 숫자가 크면
 애니메이션이 느려지게 됩니다. */
             animation-play-state: running;
             /* 애니메이션 자동 실행 */
+            /* animation-iteration-count: 3; */
             animation-iteration-count: infinite;
             /* 애니메이션 무한 반복 */
             animation-timing-function: cubic-bezier(.43, .49, .48, .49);
@@ -93,6 +102,7 @@
 
         @keyframes jump {
             0% {
+                /* translateY() : y축이동 */
                 transform: translateY(0px);
             }
 

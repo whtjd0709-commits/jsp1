@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jakarta Servlet 6.1 아키텍처 대시보드</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Chosen Palette: 'Modern Architect' (Slate, Indigo, Amber, Emerald) -->
+    <!-- Application Structure Plan:
+         1. Header: Project Context & Jakarta EE Version Indicator.
+         2. Interactive Architecture Map (Hero Section): A responsive, CSS-grid based visualization of Client/Server zones and layers. Clickable elements to drive state.
+         3. Logic Simulation (Interactive): A 'Run Request' button that visualizes a packet moving through steps 1-7.
+         4. Analytics Dashboard (Chart.js): Visualizing the 'Responsibility Distribution' and 'Processing Time' of each layer (mock data for education).
+         5. Code Repository (Tabbed Interface): Comparison of Control, Logic, and View layer code snippets.
+    -->
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #334155; }
+        .code-font { font-family: 'JetBrains Mono', monospace; }
+
+        /* Chart Container Styling */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            height: 300px;
+            max-height: 400px;
+            margin: 0 auto;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+
+        /* Layer Styles */
+        .layer-card { transition: all 0.2s ease; border-left-width: 4px; }
+        .layer-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .layer-active { ring: 2px; ring-offset: 2px; transform: scale(1.01); }
+
+        /* Flow Animation */
+        .packet-dot {
+            width: 12px; height: 12px;
+            background-color: #ef4444;
+            border-radius: 50%;
+            position: absolute;
+            z-index: 50;
+            box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+        }
+        
+        .zone-label {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            letter-spacing: 0.1em;
+        }
+    </style>
+</head>
+<body class="flex flex-col h-screen overflow-hidden">
+
+    <!-- 1. Header Area -->
+    <header class="bg-white border-b border-slate-200 px-6 py-4 flex-shrink-0 z-30 flex justify-between items-center shadow-sm">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center text-white shadow-lg shadow-indigo-100">
+                <i class="fa-solid fa-network-wired"></i>
+            </div>
+            <div>
+                <h1 class="text-lg font-bold text-slate-900">Servlet Architecture Dashboard</h1>
+                <p class="text-xs text-slate-500 font-medium">Jakarta Servlet 6.1 & JSP 3.1 Spec Analysis</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <button onclick="runSimulation()" id="sim-btn" class="px-4 py-2 bg-slate-900 text-white rounded-lg text-xs font-bold hover:bg-slate-800 transition-colors flex items-center gap-2">
+                <i class="fa-solid fa-play"></i> 요청 시뮬레이션 실행
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="flex-1 overflow-y-auto p-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6">
+            
+            <!-- 2. Architecture Map (Left Column, Span 8) -->
+            <section class="lg:col-span-8 flex flex-col gap-6">
+                
+                <!-- Intro Context -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <h2 class="text-lg font-bold text-slate-800 mb-2">아키텍처 구조도 (Architecture Map)</h2>
+                    <p class="text-sm text-slate-600 mb-6">
+                        아래 구조도는 <strong>클라이언트 영역(Browser)</strong>과 <strong>서버 영역(Container)</strong>을 물리적으로 구분하고, 서버 내부를 <strong>3가지 논리 계층</strong>으로 시각화한 것입니다. 각 단계를 클릭하여 상세 정보를 확인하세요.
+                    </p>
+
+                    <!-- Interactive Map Container -->
+                    <div class="relative min-h-[500px] border border-slate-100 rounded-xl bg-slate-50 overflow-hidden flex" id="arch-map">
+                        
+                        <!-- Packet Animation Element -->
+                        <div id="packet" class="packet-dot top-0 left-0"></div>
+
+                        <!-- ZONE: Client Side -->
+                        <div class="w-[20%] bg-slate-100 border-r border-slate-300 relative flex flex-col justify-between p-4 py-12">
+                            <div class="absolute left-2 top-1/2 -translate-y-1/2 text-[10px] font-black text-slate-300 uppercase zone-label">Client Zone</div>
+                            
+                            <!-- Step 1 -->
+                            <div id="step-1" onclick="selectStep(1)" class="layer-card p-3 bg-white border border-slate-200 rounded-xl cursor-pointer text-center relative z-10 border-l-slate-400">
+                                <div class="text-[10px] font-bold text-slate-400">01. Request</div>
+                                <i class="fa-solid fa-laptop text-slate-600 text-xl my-2"></i>
+                                <div class="text-xs font-bold">Browser</div>
+                            </div>
+
+                            <!-- Step 7 -->
+                            <div id="step-7" onclick="selectStep(7)" class="layer-card p-3 bg-white border border-slate-200 rounded-xl cursor-pointer text-center relative z-10 border-l-slate-400">
+                                <div class="text-[10px] font-bold text-slate-400">07. Response</div>
+                                <i class="fa-solid fa-file-code text-orange-500 text-xl my-2"></i>
+                                <div class="text-xs font-bold">HTML Render</div>
+                            </div>
+                        </div>
+
+                        <!-- ZONE: Server Side -->
+                        <div class="w-[80%] bg-white relative p-6">
+                            <div class="absolute right-2 top-2 text-[10px] font-black text-indigo-100 uppercase tracking-widest">Server Zone (Web Container)</div>
+                            
+                            <div class="grid grid-cols-3 gap-4 h-full">
+                                
+                                <!-- Layer: Control -->
+                                <div class="flex flex-col gap-4 bg-indigo-50/30 rounded-xl p-3 border border-indigo-100">
+                                    <div class="text-center text-[10px] font-bold text-indigo-500 uppercase tracking-wider mb-2">Control Layer</div>
+                                    
+                                    <div id="step-2" onclick="selectStep(2)" class="layer-card flex-1 bg-white border border-indigo-100 rounded-xl p-3 cursor-pointer border-l-indigo-500 shadow-sm">
+                                        <div class="text-[10px] font-bold text-indigo-400">02. Servlet Invoke</div>
+                                        <div class="text-sm font-bold text-slate-800 mt-1">Controller Dispatch</div>
+                                        <p class="text-[10px] text-slate-500 mt-2">요청 수신 및 분석</p>
+                                    </div>
+
+                                    <div class="h-12 border-l-2 border-dashed border-indigo-200 mx-auto"></div>
+
+                                    <div id="step-5" onclick="selectStep(5)" class="layer-card flex-1 bg-white border border-indigo-100 rounded-xl p-3 cursor-pointer border-l-indigo-500 shadow-sm">
+                                        <div class="text-[10px] font-bold text-indigo-400">05. Forwarding</div>
+                                        <div class="text-sm font-bold text-slate-800 mt-1">View Selection</div>
+                                        <p class="text-[10px] text-slate-500 mt-2">JSP 연결 (제어권 이양)</p>
+                                    </div>
+                                </div>
+
+                                <!-- Layer: Logic -->
+                                <div class="flex flex-col gap-4 bg-amber-50/30 rounded-xl p-3 border border-amber-100 relative">
+                                    <div class="text-center text-[10px] font-bold text-amber-600 uppercase tracking-wider mb-2">Logic & Data</div>
+                                    
+                                    <!-- Processing Visual -->
+                                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-5">
+                                        <i class="fa-solid fa-gears text-8xl"></i>
+                                    </div>
+
+                                    <div id="step-3" onclick="selectStep(3)" class="layer-card h-1/2 bg-white border border-amber-100 rounded-xl p-3 cursor-pointer border-l-amber-500 shadow-sm relative z-10">
+                                        <div class="text-[10px] font-bold text-amber-500">03. Service Logic</div>
+                                        <div class="text-sm font-bold text-slate-800 mt-1">Data Processing</div>
+                                        <div class="mt-2 flex gap-1">
+                                            <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+                                            <span class="text-[9px] text-amber-700 font-bold">Processing...</span>
+                                        </div>
+                                    </div>
+
+                                    <div id="step-4" onclick="selectStep(4)" class="layer-card h-1/2 bg-white border border-amber-100 rounded-xl p-3 cursor-pointer border-l-amber-500 shadow-sm relative z-10">
+                                        <div class="text-[10px] font-bold text-amber-500">04. Model Binding</div>
+                                        <div class="text-sm font-bold text-slate-800 mt-1">Store Data</div>
+                                        <p class="text-[10px] text-slate-500 mt-2">request.setAttribute()</p>
+                                    </div>
+                                </div>
+
+                                <!-- Layer: View -->
+                                <div class="flex flex-col gap-4 bg-emerald-50/30 rounded-xl p-3 border border-emerald-100">
+                                    <div class="text-center text-[10px] font-bold text-emerald-600 uppercase tracking-wider mb-2">View Layer</div>
+                                    
+                                    <div id="step-6" onclick="selectStep(6)" class="layer-card h-full bg-white border border-emerald-100 rounded-xl p-3 cursor-pointer border-l-emerald-500 shadow-sm flex flex-col justify-center text-center">
+                                        <div class="text-[10px] font-bold text-emerald-400 mb-2">06. JSP Rendering</div>
+                                        <i class="fa-brands fa-html5 text-3xl text-emerald-500 mb-2"></i>
+                                        <div class="text-sm font-bold text-slate-800">HTML Generation</div>
+                                        <div class="mt-2 bg-emerald-50 text-[10px] text-emerald-700 py-1 px-2 rounded font-mono">EL(${...}) Binding</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Details & Code -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Detail Text -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 h-full">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span id="detail-badge" class="px-2 py-1 bg-slate-800 text-white text-[10px] font-bold rounded uppercase">Step Info</span>
+                            <h3 id="detail-title" class="font-bold text-slate-800">단계를 선택하세요</h3>
+                        </div>
+                        <div id="detail-desc" class="text-sm text-slate-600 leading-relaxed min-h-[100px]">
+                            위의 아키텍처 맵에서 단계(Step)를 클릭하면 상세 설명과 해당 계층의 핵심 역할을 확인할 수 있습니다.
+                        </div>
+                    </div>
+                    <!-- Code Snippet -->
+                    <div class="bg-slate-900 p-6 rounded-2xl shadow-sm h-full flex flex-col">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[10px] font-bold text-indigo-400 uppercase"><i class="fa-solid fa-code"></i> Implementation</span>
+                            <span id="code-lang" class="text-[10px] text-slate-500">Java/JSP</span>
+                        </div>
+                        <pre id="detail-code" class="code-font text-xs text-indigo-100 overflow-x-auto flex-1"></pre>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- 3. Analytics & Insights (Right Column, Span 4) -->
+            <section class="lg:col-span-4 flex flex-col gap-6">
+                
+                <!-- Chart 1: Responsibility Distribution -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <h3 class="text-sm font-bold text-slate-800 mb-4">계층별 책임 비중 (Responsibility)</h3>
+                    <p class="text-xs text-slate-500 mb-4">전체 웹 애플리케이션 처리 과정에서 각 계층이 담당하는 역할의 비중입니다.</p>
+                    <div class="chart-container">
+                        <canvas id="responsibilityChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Chart 2: Processing Time Simulation -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <h3 class="text-sm font-bold text-slate-800 mb-4">단계별 처리 소요 시간 (Simulation)</h3>
+                    <p class="text-xs text-slate-500 mb-4">일반적인 DB 연동 요청 시 각 단계별 체류 시간 시뮬레이션입니다.</p>
+                    <div class="chart-container h-48">
+                        <canvas id="timeChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Insight Card -->
+                <div class="bg-indigo-900 rounded-2xl p-6 text-white shadow-xl">
+                    <h3 class="font-bold mb-2 text-sm flex items-center gap-2"><i class="fa-solid fa-lightbulb text-yellow-400"></i> 아키텍처 핵심 인사이트</h3>
+                    <div id="insight-text" class="text-xs text-indigo-100 leading-loose opacity-90">
+                        서블릿 아키텍처의 핵심은 <strong>"관심사의 분리(Separation of Concerns)"</strong>입니다. 컨트롤러는 흐름을 제어하고, 서비스는 데이터를 처리하며, 뷰는 출력을 담당합니다. 이 구조가 깨지면 유지보수가 불가능한 스파게티 코드가 됩니다.
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 p-4 text-center text-[10px] text-slate-400">
+        &copy; 2024 Servlet Architecture Dashboard. Generated for Educational Analysis.
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- Data Store ---
+        const stepData = {
+            1: {
+                title: "01. HTTP Request (Client)",
+                desc: "사용자의 브라우저에서 서버로 요청이 전송되는 단계입니다. URL, HTTP Method(GET/POST), 헤더 정보가 패킷에 담겨 네트워크를 통해 이동합니다. 가장 먼저 일어나는 물리적 상호작용입니다.",
+                code: "GET /app/dashboard HTTP/1.1\nHost: localhost:8080\nAccept: text/html",
+                layer: "Client"
+            },
+            2: {
+                title: "02. Servlet Invoke (Control)",
+                desc: "서블릿 컨테이너가 요청을 수신하고, URL 매핑(@WebServlet)을 확인하여 담당 <strong>서블릿(Controller)</strong>을 깨웁니다. 요청을 최초로 핸들링하는 진입점입니다.",
+                code: "@WebServlet(\"/dashboard\")\npublic class DashboardServlet extends HttpServlet {\n    protected void doGet(...) {\n        // Controller Logic\n    }\n}",
+                layer: "Control"
+            },
+            3: {
+                title: "03. Service Logic (Processing)",
+                desc: "<strong>데이터 처리(Data Processing)</strong>의 핵심 단계입니다. 컨트롤러가 Service 객체를 호출하면, 여기서 비즈니스 규칙 적용, 데이터 검증, DB 조회 등의 무거운 작업이 수행됩니다.",
+                code: "DashboardService service = new DashboardService();\nStatsData stats = service.getDailyStats(userId);\n// Complex calculation happens here",
+                layer: "Logic"
+            },
+            4: {
+                title: "04. Model Binding (Storage)",
+                desc: "서비스 계층에서 처리된 결과(객체)를 뷰 계층으로 넘기기 위해 <strong>Request Scope</strong>에 저장합니다. 데이터를 포장하여 배송 준비를 하는 단계입니다.",
+                code: "request.setAttribute(\"stats\", stats);\nrequest.setAttribute(\"user\", userSession);",
+                layer: "Logic"
+            },
+            5: {
+                title: "05. Forwarding (View Connection)",
+                desc: "컨트롤러가 데이터를 보여줄 적절한 <strong>JSP 페이지</strong>를 선택합니다. Forward 방식을 사용하여 request 객체(데이터 포함)를 뷰로 전달합니다.",
+                code: "RequestDispatcher rd = \n    request.getRequestDispatcher(\"/WEB-INF/views/dash.jsp\");\nrd.forward(req, resp);",
+                layer: "Control"
+            },
+            6: {
+                title: "06. JSP Rendering (View)",
+                desc: "JSP 엔진이 실행되어 HTML 템플릿과 Model 데이터를 결합합니다. EL(${...})을 통해 데이터를 출력하고 최종 HTML 문서를 생성합니다.",
+                code: "<!-- dash.jsp -->\n<div class=\"stats\">\n    <h1>Today: ${stats.count}</h1>\n</div>",
+                layer: "View"
+            },
+            7: {
+                title: "07. HTTP Response (Client)",
+                desc: "생성된 HTML이 네트워크를 타고 브라우저로 돌아옵니다. 브라우저 엔진이 이를 해석(Parsing)하여 사용자에게 시각적인 화면을 렌더링합니다.",
+                code: "HTTP/1.1 200 OK\nContent-Type: text/html\n\n<html>...Rendered Content...</html>",
+                layer: "Client"
+            }
+        };
+
+        // --- Interaction Functions ---
+        let currentStep = 1;
+        let isSimulating = false;
+
+        function selectStep(stepId) {
+            currentStep = stepId;
+            const data = stepData[stepId];
+            
+            // UI Update
+            document.getElementById('detail-badge').innerText = `Step 0${stepId} | ${data.layer}`;
+            document.getElementById('detail-title').innerText = data.title;
+            document.getElementById('detail-desc').innerHTML = data.desc;
+            document.getElementById('detail-code').innerText = data.code;
+
+            // Visual Highlight
+            document.querySelectorAll('.layer-card').forEach(card => {
+                card.classList.remove('layer-active', 'ring-indigo-400', 'ring-amber-400', 'ring-emerald-400', 'ring-slate-400');
+            });
+            
+            const activeCard = document.getElementById(`step-${stepId}`);
+            if(activeCard) {
+                let colorClass = 'ring-slate-400';
+                if(data.layer === 'Control') colorClass = 'ring-indigo-400';
+                if(data.layer === 'Logic') colorClass = 'ring-amber-400';
+                if(data.layer === 'View') colorClass = 'ring-emerald-400';
+                
+                activeCard.classList.add('layer-active', colorClass);
+            }
+        }
+
+        async function runSimulation() {
+            if(isSimulating) return;
+            isSimulating = true;
+            const btn = document.getElementById('sim-btn');
+            btn.classList.add('opacity-50', 'cursor-not-allowed');
+            
+            const packet = document.getElementById('packet');
+            packet.style.opacity = 1;
+
+            // Simulation Coordinates (Approximate centers of cards)
+            // Note: This is a simplified visual simulation logic
+            const steps = [1, 2, 3, 4, 5, 6, 7];
+            
+            for (const step of steps) {
+                selectStep(step);
+                const el = document.getElementById(`step-${step}`);
+                const map = document.getElementById('arch-map');
+                
+                // Calculate position relative to map container
+                const elRect = el.getBoundingClientRect();
+                const mapRect = map.getBoundingClientRect();
+                
+                const top = elRect.top - mapRect.top + (elRect.height / 2) - 6;
+                const left = elRect.left - mapRect.left + (elRect.width / 2) - 6;
+                
+                packet.style.top = `${top}px`;
+                packet.style.left = `${left}px`;
+                
+                // Wait for animation
+                await new Promise(r => setTimeout(r, 800));
+            }
+
+            packet.style.opacity = 0;
+            isSimulating = false;
+            btn.classList.remove('opacity-50', 'cursor-not-allowed');
+        }
+
+        // --- Charts Initialization ---
+        window.addEventListener('load', () => {
+            selectStep(1); // Init details
+
+            // Chart 1: Responsibility
+            const ctx1 = document.getElementById('responsibilityChart').getContext('2d');
+            new Chart(ctx1, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Control (Servlet)', 'Logic (Service)', 'View (JSP)', 'Client (Browser)'],
+                    datasets: [{
+                        data: [20, 40, 25, 15],
+                        backgroundColor: ['#6366f1', '#f59e0b', '#10b981', '#94a3b8'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'right', labels: { boxWidth: 10, font: { size: 10 } } }
+                    }
+                }
+            });
+
+            // Chart 2: Time Simulation
+            const ctx2 = document.getElementById('timeChart').getContext('2d');
+            new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: ['Req', 'Ctrl', 'Logic', 'Bind', 'Fwd', 'View', 'Res'],
+                    datasets: [{
+                        label: 'Processing Time (ms)',
+                        data: [10, 5, 150, 2, 3, 40, 15], // Logic layer is heaviest
+                        backgroundColor: [
+                            '#cbd5e1', '#818cf8', '#fbbf24', '#fcd34d', '#818cf8', '#34d399', '#cbd5e1'
+                        ],
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true, grid: { display: false } },
+                        x: { grid: { display: false } }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        });
+    </script>
+    
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. FontAwesome icons used. -->
+    <!-- Visualization & Content Choices:
+         - Architecture Map: CSS Grid based layout to visually separate Client vs Server zones and logical layers.
+         - Logic Simulation: Simple JS coordinate calculation to move a 'packet' dot across the steps.
+         - Charts: Used Chart.js to visualize quantitative concepts like 'Responsibility' and 'Latency'.
+    -->
+</body>
+</html>

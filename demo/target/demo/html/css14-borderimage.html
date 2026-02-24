@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* border-image 속성은 border를 이미지로 대체 */
+        #borderimg1 {
+            border: 10px solid transparent;
+            padding: 15px;
+            /* url() 30(slice) round(repeat와 같은 의미) */
+            border-image: url(../images/border.png) 30 round;
+        }
+
+        #borderimg2 {
+            border: 10px solid transparent;
+            padding: 15px;
+            border-image: url(../images/border.png) 30 stretch;
+        }
+
+        #borderimg3 {
+            border: 10px solid transparent;
+            padding: 15px;
+            border-image: url(../images/border.png) 50 round;
+        }
+
+        #borderimg4 {
+            border: 10px solid transparent;
+            padding: 15px;
+            border-image: url(../images/border.png) 20% round;
+        }
+
+        #borderimg5 {
+            border: 10px solid transparent;
+            padding: 15px;
+            border-image: url(../images/border.png) 30% round;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>The border-image Property</h1>
+
+    <p>Here, the middle sections of the image are repeated to create the border:</p>
+    <p id="borderimg1">border-image: url(border.png) 30 round;</p>
+
+    <p>Here, the middle sections of the image are repeated to create the border:</p>
+    <p id="borderimg2">border-image: url(border.png) 30 stretch;</p>
+
+    <p>Here is the original image:</p><img src="../images/border.png">
+    <p><strong>Note:</strong> Internet Explorer 10, and earlier versions, do not support the border-image property.</p>
+
+    <p id="borderimg3">border-image: url(../images/border.png) 50 round;</p>
+    <p id="borderimg4">border-image: url(../images/border.png) 20% round;</p>
+    <p id="borderimg5">border-image: url(../images/border.png) 30% round;</p>
+</body>
+
+</html>

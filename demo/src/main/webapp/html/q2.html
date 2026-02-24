@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>2. 이력서 입력 폼 만들기</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            border: 3px solid black;
+            text-align: center;
+        }
+
+        td {
+            padding: 0px;
+        }
+
+        #birthday,
+        #phone,
+        #email,
+        #name {
+            border: 0px;
+            margin: 0px;
+            width: 85%;
+            height: 30px;
+        }
+
+        #addr {
+            border: 0px;
+            margin: 0px;
+            width: 95%;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="form">
+        <div align="center">
+            <table border="1" width="45%">
+                <tr>
+                    <td width="20%" rowspan="3" height="150px">
+                        <label for="photo">사진</label>
+                        <input type="image" id="photo" src="images/image1.jpg" height="150px">
+                    </td>
+                    <th width="10%">
+                        <label for="name">이름</label>
+                    </th>
+                    <td width="25%">
+                        <input type="text" id="name" name="name">
+                    </td>
+                    <th width="10%">
+                        <label for="birthday">생년월일</label>
+                    </th>
+                    <td width="30%">
+                        <input type="date" id="birthday" name="birthDay">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="email">이메일</label>
+                    </th>
+                    <td>
+                        <input type="email" name="email" id="email">
+                    </td>
+                    <th width="10%">
+                        <label for="phone">휴대폰</label>
+                    </th>
+                    <td width="30">
+                        <input type="tel" id="phone" name="mobile">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="addr">현주소</label>
+                    </th>
+                    <td colspan="3">
+                        <input type="text" name="address" id="addr">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <label for="favorite"><strong>좋아하는 교과목</strong></label><br>
+                        <input type="checkbox" name="favorite" id="favorite" value="JAVA">JAVA
+                        <input type="checkbox" name="favorite" id="favorite" value="DATABASE">DATABASE
+                        <input type="checkbox" name="favorite" id="favorite" value="HTML/CSS">HTML/CSS
+                        <input type="checkbox" name="favorite" id="favorite" value="SPRING">SPRING
+                        <input type="checkbox" name="favorite" id="favorite" value="REACT/NEXTJS">REACT/NEXTJS
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <strong>학력 사항</strong><br>
+                        <hr>
+                        <label for="gdate">졸업일</label>
+                        <input type="date" name="gdate" id="gdate">
+                        <label for="sName">학교이름</label>
+                        <input type="text" name="sName" id="sName" size="20">
+                        <label for="major">전공</label>
+                        <input type="text" name="major" id="major" size="10">
+                        <label for="gcheck">졸업여부</label>
+                        <input type="checkbox" name="gcheck" id="gcheck"><br>
+                        <label for="sAddr">소재지</label>
+                        <input type="text" name="sAddr" id="sAddr" size="50">
+                        <label for="score">성적</label>
+                        <input type="number" name="score" id="score" size="5">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <label for="career"><strong>경력 사항</strong></label>
+                        <hr>
+                        <textarea name="career" id="career" cols="100" rows="10"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <label for="introduce"><strong>자기 소개</strong></label>
+                        <hr>
+                        <textarea name="introduce" id="introduce" cols="100" rows="10"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <label for="hobby"><strong>취미</strong></label>
+                        <hr>
+                        <textarea name="hobby" id="hobby" cols="100" rows="10"></textarea>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <input type="submit" value="저장">
+            <input type="reset" value="취소">
+        </div>
+    </form>
+</body>
+
+</html>

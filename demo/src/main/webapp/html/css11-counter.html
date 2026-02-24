@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS를 이용한 counter 처리</title>
+    <style>
+        /* 
+        CSS를 이용한 counter 처리
+         : CSS를 이용한 항목별 카운터 처리
+        - h1 ~ h6에 카운트 처리하는 방법
+        - 리스트 태그에 카운트 처리하는 방법
+
+        속성 
+        counter-reset: 속성값;
+         : 가장 먼저 사용해야하는 속성. 속성 기준값.
+        counter-increment: 속성값;
+         : counter-reset의 속성값 기준으로 증가
+        content: 속성값;
+         : 생성해서 넣을 내용. 속성에 추가할 내용을 생성.
+         counter() 또는 counters()를 사용해서 추가함. 
+         인자값으로 카운터로 사용할 값을 입력해서 카운트 값을 얻음.
+        */
+        body {
+            counter-reset: section;
+        }
+
+        h1 {
+            counter-reset: subsection;
+        }
+
+        h1::before {
+            counter-increment: section;
+            content: "Section " counter(section) ". ";
+        }
+
+        h2::before {
+            counter-increment: subsection;
+            content: counter(section) "." counter(subsection) " ";
+        }
+
+        /* counter를 초기값 설정 */
+        ol {
+            counter-reset: listsection;
+            list-style-type: none;
+        }
+
+        li {
+            font-size: 30px;
+        }
+
+        /* counter 초기값에 대한 증가와 적용 */
+        li::before {
+            counter-increment: listsection;
+            content: counters(listsection, ".") " ";
+        }
+    </style>
+</head>
+
+<body>
+    <h1>headline 태그에 counter 처리</h1>
+    <div>
+        <h1>HTML tutorials:</h1>
+        <h2>HTML Tutorial</h2>
+        <h2>CSS Tutorial</h2>
+
+        <h1>Scripting tutorials:</h1>
+        <h2>JavaScript</h2>
+        <h2>VBScript</h2>
+
+        <h1>XML tutorials:</h1>
+        <h2>XML</h2>
+        <h2>XSL</h2>
+    </div>
+    <hr>
+    <h1>list 태그에 counter 처리</h1>
+    <div>
+        <ol>
+            <li>item</li>
+            <li>item
+                <ol>
+                    <li>item</li>
+                    <li>item</li>
+                    <li>item
+                        <ol>
+                            <li>item</li>
+                            <li>item</li>
+                            <li>item</li>
+                        </ol>
+                    </li>
+                    <li>item</li>
+                </ol>
+            </li>
+            <li>item</li>
+            <li>item</li>
+        </ol>
+    </div>
+    <hr>
+    <ol>
+        <li>item</li>
+        <li>item</li>
+    </ol>
+</body>
+
+</html>

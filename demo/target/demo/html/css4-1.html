@@ -5,7 +5,10 @@
     <meta charset="utf-8">
     <title>display 속성</title>
     <style>
-        .box1,.box2,.box3,.box4{
+        .box1,
+        .box2,
+        .box3,
+        .box4 {
             width: 100px;
             height: 100px;
             border: 1px solid red;
@@ -14,14 +17,17 @@
             text-align: center;
             box-sizing: border-box;
             padding-top: 40px;
-           }
-           .box2{
-            display: none;
-           }
-           .box3{
-            visibility: hidden;
-           }
+        }
 
+        .box2 {
+            /* 표시 자체 안함. */
+            display: none;
+        }
+
+        .box3 {
+            /* 보이는 것을 보이지 않게. */
+            visibility: hidden;
+        }
     </style>
 </head>
 
@@ -32,19 +38,22 @@
     <div class="box4">BOX4</div>
     <button class="btn2">박스2 컨트롤 </button>
     <button class="btn3">박스3 보이기 </button>
+    <!-- jquery 스크립트 로드 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         $("button.btn2").click(function () {
             $(".box2").toggle()
         });
         $("button.btn3").click(function () {
-            if ($(".box3").css("visibility")=='visible'){
-               $(".box3").css("visibility")=="visible"); 
-            }else{
-                $(".box3").css "visibility","hidden");
+            if ($(".box3").css("visibility") != 'visible') {
+                $(".box3").css("visibility", "visible");
+            } else {
+                $(".box3").css("visibility", "hidden");
             }
-        };
+
+        });
     </script>
+
 </body>
 
 </html>

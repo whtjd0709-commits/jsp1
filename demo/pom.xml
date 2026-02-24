@@ -6,7 +6,7 @@
 
   <groupId>com.example.jsptest</groupId>
   <artifactId>demo</artifactId>
-  <version>version</version>
+  <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
   <name>demo Maven Webapp</name>
@@ -15,13 +15,14 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
   </properties>
 
-<!-- dependency가 라이브러리를 의미-->
-<!-- dependencie에 라이브러리를 넣어주면, maven 찾아서 다운로드 관리-->
+
+  <!-- dependencies에 라이브러를 넣어주면, maven 찾아서 다운로드 관리 -->
   <dependencies>
+    <!-- dependency가 라이브러리를 의미함. -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -29,32 +30,29 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-        <groupId>jakarta.platform</groupId>
-        <artifactId>jakarta.jakartaee-web-api</artifactId>
-        <version>11.0.0</version>
-        <scope>provided</scope> 
-  </dependency>
+      <groupId>jakarta.platform</groupId>
+      <artifactId>jakarta.jakartaee-web-api</artifactId>
+      <version>11.0.0</version>
+      <scope>provided</scope> 
+    </dependency>
   </dependencies>
-  
 
-<build>
+  <build>
     <finalName>demo</finalName>
     <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.11.0</version>
-            <configuration>
-                <source>21</source> <target>21</target>
-            </configuration>
-        </plugin>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-war-plugin</artifactId>
-            <version>3.4.0</version>
-            <configuration>
-                <failOnMissingWebXml>false</failOnMissingWebXml> </configuration>
-        </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.4.0</version>
+        <configuration>
+            <failOnMissingWebXml>false</failOnMissingWebXml> 
+        </configuration>
+      </plugin>
     </plugins>
-</build>
+  </build>
 </project>

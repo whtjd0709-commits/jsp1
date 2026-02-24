@@ -1,24 +1,48 @@
+<!-- HTML은 태그를 통해서 엘리먼트 표기 -->
+<!-- <!DOCTYPE html> 는 지금부터 사용되는 문서의 타입 -->
 <!DOCTYPE html>
+<!-- html은 웹 페이지를 document 시작을 의미함.-->
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8">
-        <title>image 태그 연습</title>
-    </head>
-    <body>
-        <!-- image 태그 속성 : src, alt, width, height -->
-        <!-- src : 이미지 파일의 경로를 지정 -->
-        <!-- alt : 이미지가 로드되지 않을 때 대체 텍스트 -->
-        <!-- width, height : 이미지의 크기 지정 -->
+<!-- html 구조는 계층 구조를 가지고 있어요. 
+    html의 일반적으로 두개의 엘리먼트(요소) head, body
+    - head의 역할 : 웹 페이지의 메타정보를 정의하는 역할. 
+    - body의 역할 : 실제 데이터를 처리하는 역할을 함. 
+        
+    웹에서 html의 역할을 데이터의 표기(웹 뼈대 역할)
+-->
 
-        <img src="images/sample1.jpg" alt="샘플 이미지 1" width="300" height="200">
-        <img src="images/sample2.jpg" alt="샘플 이미지 2" width="300" height="200">
-        <img src="images/sample3.jpg" alt="샘플 이미지 3" width="300" height="200">
+<head>
+    <!-- 자식 태그 : title, meta, link -->
+    <!-- style, script등의 태그를 head 넣어 사용하기도 함 -->
+    <meta charset="utf-8">
+    <title>웹 HTML 처음 생성!</title>
+</head>
 
-        <!-- 
-            a 태그 (anchor, 앵커) : 하이퍼링크를 생성하는 태그
-            href 속성 : 링크할 URL을 지정
-        -->
-        <a href="tag2.html">다음 페이지로 이동</a>
-        <a href="https://www.naver.com" target="_blank">네이버 사이트로 이동</a>
-    </body>
+<body>
+    <!-- h1 ~ h6  : 헤드라인 태그(제목 태그 숫자가 작을 수록 큰 제목)-->
+    <h1>h1 태그</h1>
+    <h2>h2 태그</h2>
+    <h3>h3 태그</h3>
+    <h4>h4 태그</h4>
+    <h5>h5 태그</h5>
+    <h6>h6 태그</h6>
+    <p>
+        <strong>문단 태그</strong> 입니다. <i>여러개의 문자열을 입력</i>해서 하나의 문단으로 만들어줘요.
+        줄바꿈을 해도 처리되지는 않아요.
+        <u>html은 엔터, 띄어쓰기, 탭 모두 하나의 띄어쓰기</u>로 처리.
+
+        <b>줄바꿈 되지 않아요.</b>
+        줄바꿈하고 싶다면, br태그 을 사용합니다.
+        <br>안녕!<br>
+        나는 오늘 처음 html을 시작해.<br>
+        반가워!!
+    </p>
+    <!-- 
+        strong, b : 굵은 글씨 
+        i : 기울임 
+        u : 밑줄 
+        span 태그를 많이 사용함. 스타일을 적용해서 작업. (CSS)
+    -->
+</body>
+
 </html>

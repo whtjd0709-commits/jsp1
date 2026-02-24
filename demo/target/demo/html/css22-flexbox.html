@@ -35,134 +35,310 @@
             box-sizing: border-box;
             border: 1px solid red;
         }
+
+        /* box-sizing end */
+
+        /* flex-box는 위치와 정렬에 대한 content 처리 */
+        /* flex-box1 : flex-direction start*/
         .container,
-         .container1,
-         .container2, 
-         .container2, 
-         .container3, 
-         .container4, 
-         .container5, 
-         .container6, 
-         .container7{
+        .container1,
+        .container2,
+        .container3,
+        .container4,
+        .container10,
+        .container11,
+        .container12,
+        .container13,
+        .container14,
+        .container20,
+        .container21,
+        .container22,
+        .container23,
+        .container24 {
+            /* flex-box는 display가 flex인 상황에서 작업 */
             display: flex;
-            height: 300px;
-            border-bottom: 1px solid yellow;
-            background-color: blueviolet;
+            border-bottom: 1px solid #ffcc00;
+            background-color: #6699ff;
             padding: 1em;
             color: white;
         }
 
-        /* box-sizing end */
-
-        h2{
+        h2 {
             color: red;
         }
 
-        h2 b{
+        h2 b {
             color: black;
         }
 
-        /* box css*/
-        .box1, .box2, .box3, .box4{
+        .container1 {
+            /* column부분을 block 태그처럼 처리 */
+            flex-direction: column;
+        }
+
+        .container2 {
+            /* column과 비슷한데 쌓는 순서가 역방향 */
+            flex-direction: column-reverse;
+        }
+
+        .container3 {
+            /* 기본 값이 외쪽 정렬 */
+            flex-direction: row;
+        }
+
+        .container4 {
+            /* 역방향으로 오른쪽 정렬 */
+            flex-direction: row-reverse;
+        }
+
+        /* flex-box1 : flex-direction end*/
+
+        /* flex-box2 : flex-wrap, flex-flow start */
+        .container10 {
+            flex-wrap: wrap;
+        }
+
+        .container11 {
+            flex-wrap: nowrap;
+        }
+
+        .container12 {
+            flex-wrap: wrap-reverse;
+        }
+
+        .container13 {
+            flex-flow: row;
+        }
+
+        .container14 {
+            flex-flow: row-reverse;
+        }
+
+        /* flex-box2 : flex-wrap, flex-flow end */
+
+        /* flex-box3 : justify-content start */
+        /* 
+        justify-content 속성 (기본 값은 normal)
+         center :  항목(item)을 축의 중심 부분에 정렬
+         start : 항목을 축의 시작 부분에 정렬
+         end : 항목을 축의 끝부분에 정렬
+         left : 항목들을 축의 왼쪽 부분에 정렬
+         right : 항목들을 축의 오른쪽에 정렬
+        - 분산 정렬
+         space-between : 항목을 고르게 정렬. 첫 시작과 끝은 밀착 정렬
+         space-around : 항목을 고르게 정렬. 양쪽 여백의 절반만큼 나눠서 정렬
+         space-evenly : 항목을 고르게 정렬. 각 항목이 동일한 여백을 가짐.
+         stretch : 항목을 고르게 정렬. 'auto' 크기로 설정된 항목들의 컨테이너에 맞게 늘림
+
+        */
+        .container20 {
+            justify-content: flex-start;
+        }
+
+        .container21 {
+            justify-content: center;
+        }
+
+        .container22 {
+            justify-content: flex-end;
+        }
+
+        .container23 {
+            justify-content: space-around;
+        }
+
+        .container24 {
+            justify-content: space-between;
+        }
+
+        /* flex-box3 : justify-content end */
+        /* box CSS */
+        .box1,
+        .box2,
+        .box3,
+        .box4 {
             padding: 2em;
-            margin: 0,5em;
+            margin: 0.5em;
             background-color: white;
             color: black;
-
         }
-        hr{
-            height: 5px;
+
+        hr {
+            height: 3px;
             background-color: #ccc;
             border: none;
         }
-        .container1{
-            flex-direction: column;
+
+        /* align-item, align-content 컨테이너 설정 */
+        .container30,
+        .container31,
+        .container32,
+        .container33,
+        .container34,
+        .container40,
+        .container41,
+        .container42,
+        .container43,
+        .container44 {
+            /* flex-box는 display가 flex인 상황에서 작업 */
+            display: flex;
+            height: 300px;
+            /* 이전에 container css에서 height 추가*/
+            border-bottom: 1px solid #ffcc00;
+            background-color: #6699ff;
+            padding: 1em;
+            color: white;
         }
-        .container2{
-            flex-direction: column-reverse;
+
+        /* align-item start*/
+        .container30 {
+            align-items: flex-start;
         }
-        .container3{
-            flex-direction: row;
+
+        .container31 {
+            align-items: center;
         }
-        .container4{
-            flex-direction: row-reverse;
+
+        .container32 {
+            align-items: flex-end;
         }
-                .container5{
+
+        .container33 {
+            align-items: baseline;
+        }
+
+        .container34 {
+            align-items: stretch;
+        }
+
+        /* align-item end */
+        /* align-content start : flex-wrap 설정으로 wrap을 사용해야 효과를 적용할 수 있음. */
+        .container40 {
             flex-wrap: wrap;
+            align-content: flex-start;
         }
-                .container6{
-            flex-wrap: nowrap;
+
+        .container41 {
+            flex-wrap: wrap;
+            align-content: center;
         }
-                .container7{
-            flex-wrap: wrap-reverse;
+
+        .container42 {
+            flex-wrap: wrap;
+            align-content: flex-end;
         }
+
+        .container43 {
+            flex-wrap: wrap;
+            align-content: space-around;
+        }
+
+        .container44 {
+            flex-wrap: wrap;
+            align-content: space-between;
+        }
+
+        /* align-content end */
+
         /* flex-box6 start :  */
-            .container50,
-            .container51,
-            .container52,
-            .container53,
-            .container54 {
-                display: flex;
-                border-bottom: 1px solid #ffcc00;
-                background-color: #6699ff;
-                padding: 1em;
-                height: 120px;
-                color: #fff;
-                margin-bottom: 30px;
-                align-items: center;
-            }
+        .container50,
+        .container51,
+        .container52,
+        .container53,
+        .container54 {
+            display: flex;
+            border-bottom: 1px solid #ffcc00;
+            background-color: #6699ff;
+            padding: 1em;
+            height: 120px;
+            color: #fff;
+            margin-bottom: 30px;
+            align-items: center;
+        }
 
-             /* order : box의 순서가 변경됩니다. 숫자에 따라서 정렬*/
-            .container50 .box1 { order: 3; }
-            .container50 .box2 { order: 1; }
-            .container50 .box3 { order: 4; }
-            .container50 .box4 { order: 2; }
+        /* order : box의 순서가 변경됩니다. 숫자에 따라서 정렬*/
+        .container50 .box1 {
+            order: 3;
+        }
 
-            /* flex-grow : box2가 다른 것에 비해서 2배 더 넓어집니다. */
-            .container51 .box1 { flex-grow: 1; }
-            .container51 .box2 { flex-grow: 2; }
-            .container51 .box3 { flex-grow: 1; }
-            .container51 .box4 { flex-grow: 1; }
+        .container50 .box2 {
+            order: 1;
+        }
 
-            /* flex-shrink : box2가 가장 많이 줄어듭니다. 
-             : flex-item 요소의 크기가 flex-container 요소보다 클 때  flex-shrink 속성을 사용
-              설정된 숫자 갑에 따라서 flex-container 요소 내부에서 flex-item 요소의 크기가 축소됨.
-              음수는 허용되지 않아요. 
-            */
-            .container52 .box1,
-            .container52 .box2,
-            .container52 .box3,
-            .container52 .box4 {
-                width: 200px;
-            }
+        .container50 .box3 {
+            order: 4;
+        }
 
-            .container52 .box2 {
-                flex-shrink: 3;
-            }
+        .container50 .box4 {
+            order: 2;
+        }
 
-            /* flex-basis : 각 박스의 기본 너비가 다르게 적용(flex-item의 초기 크기 지정) */
-            .container53 .box1 { flex-basis: 100px; }
-            .container53 .box2 { flex-basis: 200px; }
-            .container53 .box3 { flex-basis: 150px; }
-            .container53 .box4 { flex-basis: 80px; }
+        /* flex-grow : box2가 다른 것에 비해서 2배 더 넓어집니다. */
+        .container51 .box1 {
+            flex-grow: 1;
+        }
 
-            /* align-self : box2는 가운데, box4는 아래에 정렬 
-                        align-items는 좌우 값을 가지지 않아요. 
-            */
-            .container54 {
-                align-items: flex-start;
-            }
+        .container51 .box2 {
+            flex-grow: 2;
+        }
 
-            .container54 .box2 {
-                align-self: center;
-            }
+        .container51 .box3 {
+            flex-grow: 1;
+        }
 
-            .container54 .box4 {
-                align-self: flex-end;
-            }
+        .container51 .box4 {
+            flex-grow: 1;
+        }
 
-            /* flex-box6 end */
+        /* flex-shrink : box2가 가장 많이 줄어듭니다. 
+            : flex-item 요소의 크기가 flex-container 요소보다 클 때  flex-shrink 속성을 사용
+            설정된 숫자 갑에 따라서 flex-container 요소 내부에서 flex-item 요소의 크기가 축소됨.
+            음수는 허용되지 않아요. 
+        */
+        .container52 .box1,
+        .container52 .box2,
+        .container52 .box3,
+        .container52 .box4 {
+            width: 200px;
+        }
 
+        .container52 .box2 {
+            flex-shrink: 3;
+        }
+
+        /* flex-basis : 각 박스의 기본 너비가 다르게 적용(flex-item의 초기 크기 지정) */
+        .container53 .box1 {
+            flex-basis: 100px;
+        }
+
+        .container53 .box2 {
+            flex-basis: 200px;
+        }
+
+        .container53 .box3 {
+            flex-basis: 150px;
+        }
+
+        .container53 .box4 {
+            flex-basis: 80px;
+        }
+
+        /* align-self : box2는 가운데, box4는 아래에 정렬 
+                    align-items는 좌우 값을 가지지 않아요. 
+        */
+        .container54 {
+            align-items: flex-start;
+        }
+
+        .container54 .box2 {
+            align-self: center;
+        }
+
+        .container54 .box4 {
+            align-self: flex-end;
+        }
+
+        /* flex-box6 end */
     </style>
 </head>
 
@@ -187,9 +363,268 @@
             둘다 같은 크기(너비는 300px, 높이는 100px)
         </div>
     </div>
+    <hr>
+    <div>
+        <h2> order:
+        </h2>
+        <div class="container50">
+            <div class="box1">box1</div>
+            <div class="box2">box2</div>
+            <div class="box3">box3</div>
+            <div class="box4">box4</div>
+        </div>
+
+        <h2> flex-grow:
+
+        </h2>
+        <div class="container51">
+            <div class="box1">box1</div>
+            <div class="box2">box2</div>
+            <div class="box3">box3</div>
+            <div class="box4">box4</div>
+        </div>
+        <h2> flex-shrink:
+
+        </h2>
+        <div class="container52">
+            <div class="box1">box1</div>
+            <div class="box2">box2</div>
+            <div class="box3">box3</div>
+            <div class="box4">box4</div>
+        </div>
+        <h2> flex-basis:
+
+        </h2>
+        <div class="container53">
+            <div class="box1">box1</div>
+            <div class="box2">box2</div>
+            <div class="box3">box3</div>
+            <div class="box4">box4</div>
+        </div>
+        <h2> align-self:
+            <b>center;</b>
+        </h2>
+        <div class="container54">
+            <div class="box1">box1</div>
+            <div class="box2">box2</div>
+            <div class="box3">box3</div>
+            <div class="box4">box4</div>
+        </div>
+    </div>
+    <hr>
+    <!-- 
+   align-item
+    -->
+    <div class="align-item">
+        <h2>align-item:
+            <b>flex-start;</b>
+        </h2>
+        <div class="container30">
+            <div class="box1">box1</div>
+            <div class="box2">box2</div>
+            <div class="box3">box3</div>
+            <div class="box4">box4</div>
+        </div>
+        <h2>align-item:
+            <b>center;</b>
+        </h2>
+        <div class="container31">
+            <div class="box1">box1</div>
+            <div class="box2">box2</div>
+            <div class="box3">box3</div>
+            <div class="box4">box4</div>
+        </div>
+        <h2>align-item:
+            <b>flex-end;</b>
+        </h2>
+        <div class="container32">
+            <div class="box1">box1</div>
+            <div class="box2">box2</div>
+            <div class="box3">box3</div>
+            <div class="box4">box4</div>
+        </div>
+        <h2>align-item:
+            <b>baseline;</b>
+        </h2>
+        <div class="container33">
+            <div class="box1">box1</div>
+            <div class="box2">box2</div>
+            <div class="box3">box3</div>
+            <div class="box4">box4</div>
+        </div>
+        <h2>align-item:
+            <b>stretch;</b>
+        </h2>
+        <div class="container34">
+            <div class="box1">box1</div>
+            <div class="box2">box2</div>
+            <div class="box3">box3</div>
+            <div class="box4">box4</div>
+        </div>
+    </div>
+    <hr>
+    <!-- 
+    align-content 
+    -->
+    <div class="align-content">
+        <h2>align-content:
+            <b>flex-start;</b>
+        </h2>
+        <div class="container40">
+            <div class="box1">box1</div>
+            <div class="box2">box2</div>
+            <div class="box3">box3</div>
+            <div class="box4">box4</div>
+        </div>
+        <h2>align-content:
+            <b>center;</b>
+        </h2>
+        <div class="container41">
+            <div class="box1">box1</div>
+            <div class="box2">box2</div>
+            <div class="box3">box3</div>
+            <div class="box4">box4</div>
+        </div>
+        <h2>align-content:
+            <b>flex-end;</b>
+        </h2>
+        <div class="container42">
+            <div class="box1">box1</div>
+            <div class="box2">box2</div>
+            <div class="box3">box3</div>
+            <div class="box4">box4</div>
+        </div>
+        <h2>align-content:
+            <b>space-around;</b>
+        </h2>
+        <div class="container43">
+            <div class="box1">box1</div>
+            <div class="box2">box2</div>
+            <div class="box3">box3</div>
+            <div class="box4">box4</div>
+        </div>
+        <h2>align-content:
+            <b>space-between;</b>
+        </h2>
+        <div class="container44">
+            <div class="box1">box1</div>
+            <div class="box2">box2</div>
+            <div class="box3">box3</div>
+            <div class="box4">box4</div>
+        </div>
+    </div>
+    <hr>
+    <!-- 
+    justify-content 속성은 브라우저가 콘텐츠 항목 사이에 주변의 공간을 플렉스 컨테이너에서
+    main-axis 또는 그리드에서 인라인 축을 기준으로 어떻게 정렬할지 정의
+    -->
+    <div class="justify-content">
+        <h2>justify-content:
+            <b>flex-start;</b>
+        </h2>
+        <div class="container20">
+            <div class="box1">box1</div>
+            <div class="box2">box2</div>
+            <div class="box3">box3</div>
+            <div class="box4">box4</div>
+        </div>
+        <h2>justify-content:
+            <b>center;</b>
+        </h2>
+        <div class="container21">
+            <div class="box1">box1</div>
+            <div class="box2">box2</div>
+            <div class="box3">box3</div>
+            <div class="box4">box4</div>
+        </div>
+        <h2>justify-content:
+            <b>flex-end;</b>
+        </h2>
+        <div class="container22">
+            <div class="box1">box1</div>
+            <div class="box2">box2</div>
+            <div class="box3">box3</div>
+            <div class="box4">box4</div>
+        </div>
+        <h2>justify-content:
+            <b>space-around;</b>
+        </h2>
+        <div class="container23">
+            <div class="box1">box1</div>
+            <div class="box2">box2</div>
+            <div class="box3">box3</div>
+            <div class="box4">box4</div>
+        </div>
+        <h2>justify-content:
+            <b>space-between;</b>
+        </h2>
+        <div class="container24">
+            <div class="box1">box1</div>
+            <div class="box2">box2</div>
+            <div class="box3">box3</div>
+            <div class="box4">box4</div>
+        </div>
+    </div>
+    <hr>
+    <!-- 
+    flex-wrap 속성은  flex-item 요소들이 강제로 한줄로 배치되게 할지, 아니면
+    가능한 영역 내에서 벗어나지 않고 나누어 표기할지 결정하는 속성
+    -->
+    <div class="flex-wrap-flow">
+        <h2>flex-wrap :
+            <b>wrap;</b>
+        </h2>
+        <div class="container10">
+            <div class="box1">box1</div>
+            <div class="box2">box2</div>
+            <div class="box3">box3</div>
+            <div class="box4">box4</div>
+        </div>
+        <h2>flex-wrap :
+            <b>nowrap;</b>
+        </h2>
+        <div class="container11">
+            <div class="box1">box1</div>
+            <div class="box2">box2</div>
+            <div class="box3">box3</div>
+            <div class="box4">box4</div>
+        </div>
+        <h2>flex-wrap :
+            <b>wrap-reverse;</b>
+        </h2>
+        <div class="container12">
+            <div class="box1">box1</div>
+            <div class="box2">box2</div>
+            <div class="box3">box3</div>
+            <div class="box4">box4</div>
+        </div>
+        <h2>flex-flow :
+            <b>row wrap;</b>
+        </h2>
+        <div class="container13">
+            <div class="box1">box1</div>
+            <div class="box2">box2</div>
+            <div class="box3">box3</div>
+            <div class="box4">box4</div>
+        </div>
+        <h2>flex-wrap :
+            <b>row wrap-reverse;</b>
+        </h2>
+        <div class="container14">
+            <div class="box1">box1</div>
+            <div class="box2">box2</div>
+            <div class="box3">box3</div>
+            <div class="box4">box4</div>
+        </div>
+    </div>
+    <hr>
+    <!-- 
+    flex-direction : flex 컨테이너 내에 있는 item(content)을 배치할 때, 
+    사용할 주축 및 방향을 지정하는 속성     
+    -->
     <div class="flex-direction">
-        <h2>기본값 :
-            <b>container은 하늘색 1,2,3,4는 항목(item);</b>    
+        <h2>기본 값 :
+            <b>container는 하늘색 1, 2, 3, 4은 항목(item);</b>
         </h2>
         <div class="container">
             <div class="box1">box1</div>
@@ -197,112 +632,44 @@
             <div class="box3">box3</div>
             <div class="box4">box4</div>
         </div>
-        <h2>flex-direction : </h2>
-        <b>column</b>
+        <h2>flex-direction :
+            <b>column;</b>
+        </h2>
         <div class="container1">
             <div class="box1">box1</div>
             <div class="box2">box2</div>
             <div class="box3">box3</div>
             <div class="box4">box4</div>
         </div>
-        <h2>flex-direction : </h2>
-        <b>column-reverse</b>
+        <h2>flex-direction :
+            <b>column-reverse;</b>
+        </h2>
         <div class="container2">
             <div class="box1">box1</div>
             <div class="box2">box2</div>
             <div class="box3">box3</div>
             <div class="box4">box4</div>
         </div>
-        <h2>flex-direction : </h2>
-        <b>row</b>
+        <h2>flex-direction :
+            <b>row;</b>
+        </h2>
         <div class="container3">
             <div class="box1">box1</div>
             <div class="box2">box2</div>
             <div class="box3">box3</div>
             <div class="box4">box4</div>
         </div>
-        <h2>flex-direction : </h2>
-        <b>row-reverse</b>
+        <h2>flex-direction :
+            <b>row-reverse;</b>
+        </h2>
         <div class="container4">
             <div class="box1">box1</div>
             <div class="box2">box2</div>
             <div class="box3">box3</div>
             <div class="box4">box4</div>
         </div>
-        <h2>flex-direction : </h2>
-        <b>wrap</b>
-        <div class="container5">
-            <div class="box1">box1</div>
-            <div class="box2">box2</div>
-            <div class="box3">box3</div>
-            <div class="box4">box4</div>
-        </div>
-        <h2>flex-direction : </h2>
-        <b>noewrap</b>
-        <div class="container6">
-            <div class="box1">box1</div>
-            <div class="box2">box2</div>
-            <div class="box3">box3</div>
-            <div class="box4">box4</div>
-        </div>
-        <h2>flex-direction : </h2>
-        <b>wrap-reverse</b>
-        <div class="container7">
-            <div class="box1">box1</div>
-            <div class="box2">box2</div>
-            <div class="box3">box3</div>
-            <div class="box4">box4</div>
-        </div>
-        <hr>
-        <div>
-            <h2> order:
-            </h2>
-            <div class="container50">
-                <div class="box1">box1</div>
-                <div class="box2">box2</div>
-                <div class="box3">box3</div>
-                <div class="box4">box4</div>
-            </div>
-
-            <h2> flex-grow:
-
-            </h2>
-            <div class="container51">
-                <div class="box1">box1</div>
-                <div class="box2">box2</div>
-                <div class="box3">box3</div>
-                <div class="box4">box4</div>
-            </div>
-            <h2> flex-shrink:
-        
-            </h2>
-            <div class="container52">
-                <div class="box1">box1</div>
-                <div class="box2">box2</div>
-                <div class="box3">box3</div>
-                <div class="box4">box4</div>
-            </div>
-            <h2> flex-basis:
-                
-            </h2>
-            <div class="container53">
-                <div class="box1">box1</div>
-                <div class="box2">box2</div>
-                <div class="box3">box3</div>
-                <div class="box4">box4</div>
-            </div>
-            <h2> align-self:
-                <b>center;</b>
-            </h2>
-            <div class="container54">
-                <div class="box1">box1</div>
-                <div class="box2">box2</div>
-                <div class="box3">box3</div>
-                <div class="box4">box4</div>
-            </div>
-        </div>
-
     </div>
+    <hr>
 
 </body>
 

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가상 선택자를 이용한 테이블 디자인 </title>
+    <style>
+        /* 첫번째 테이블 지정 - 종속 선택자 */
+        table.first {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        /* 첫번째 테이블의 th 태그 선택자 */
+        table.first th {
+            padding: 8px;
+            background-color: #bc1212;
+            color: #fff;
+            letter-spacing: 3px;
+        }
+
+        /* 가상 선택자를 이용한 지정. 
+            th 태그의 2번째 요소의 letter-spacing 변경 : 3px -> 45px
+        */
+        table.first th:nth-child(2) {
+            letter-spacing: 45px;
+        }
+
+        table.first td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* 가상 선택자를 이용해서 첫번째 td의 width는 15% */
+        table.first td:first-child {
+            width: 15%;
+        }
+
+        /* 두번째 td는 정렬을 왼쪽 정렬, 폭을 65% */
+        table.first td:nth-child(2) {
+            text-align: left;
+            width: 65%;
+        }
+
+        /* 마지막 td는 폭을 20%로 지정 */
+        table.first td:last-child {
+            width: 20%;
+        }
+
+        table.first tr:nth-child(odd) {
+            background-color: #d5ecff;
+        }
+
+        table.first tr:nth-child(even) {
+            background-color: #fffed5;
+        }
+
+        p:empty {
+            margin: 30px;
+        }
+
+        table.second {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table.second th {
+            padding: 8px;
+            background-color: #bc1212;
+            color: #fff;
+            letter-spacing: 3px;
+        }
+
+        table.second th:nth-of-type(2) {
+            letter-spacing: 45px;
+        }
+
+        table.second td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        table.second td:first-of-type {
+            width: 15%;
+        }
+
+        table.second td:nth-of-type(2) {
+            text-align: left;
+            width: 65%;
+        }
+
+        table.second td:last-of-type {
+            width: 20%;
+        }
+
+        /* nth-of-type(odd) : 홀수 요소 */
+        table.second tr:nth-of-type(odd) {
+            background-color: #d5ecff;
+        }
+
+        /* nth-of-type(even) : 짝수 요소 */
+        table.second tr:nth-of-type(even) {
+            background-color: #fffed5;
+        }
+
+        section.part1 div,
+        section.part2 div {
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin: 2px;
+        }
+
+        section.part1 div:first-of-type {
+            background-color: skyblue;
+        }
+
+        section.part1 div:last-of-type {
+            background-color: yellow;
+        }
+
+        section.part1 div:nth-last-of-type(2) {
+            background-color: pink;
+        }
+
+        section.part1 div:nth-of-type(2) {
+            background-color: blue;
+        }
+
+        /* 타입을 따지지 않고, 순서만 보는 가상 선택자 */
+        /* div: first-child는 첫번째 요소가 div이면 해당 */
+        section.part2 div:first-child {
+            background-color: skyblue;
+        }
+
+        /* 마지막 요소가 div인 경우에 해당 */
+        section.part2 div:last-child {
+            background-color: yellow;
+        }
+
+        /* nth-child(2) : 두번째 태그 */
+        section.part2 div:nth-child(2) {
+            background-color: blue;
+        }
+
+        /* nth-last-child(2) : 뒤에서 두번째 태그 */
+        section.part2 div:nth-last-child(2) {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <table border="1" class="first">
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>날짜</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>가상선택자</td>
+            <td>2017.9.17</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>하위선택자</td>
+            <td>2017.9.16</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>인접선택자</td>
+            <td>2017.9.15</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>형제자매선택자</td>
+            <td>2017.9.15</td>
+        </tr>
+    </table>
+    <p></p>
+    <table border="1" class="second">
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>날짜</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>가상선택자</td>
+            <td>2017.9.17</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>하위선택자</td>
+            <td>2017.9.16</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>인접선택자</td>
+            <td>2017.9.15</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>형제자매선택자</td>
+            <td>2017.9.15</td>
+        </tr>
+    </table>
+    <p></p>
+    <section class="part1">
+        <h2> 수도선택자 파트 1</h2>
+        <div>div 수도 선택자 1</div>
+        <div>div 수도 선택자 2</div>
+        <div>div 수도 선택자 3</div>
+        <div>div 수도 선택자 4</div>
+        <div>div 수도 선택자 5</div>
+        <p>수도 선택자 파트 1 끝</p>
+    </section>
+    <p></p>
+    <section class="part2">
+        <h2> 수도선택자 파트 2</h2>
+        <div>div 수도 선택자 1</div>
+        <div>div 수도 선택자 2</div>
+        <div>div 수도 선택자 3</div>
+        <div>div 수도 선택자 4</div>
+        <div>div 수도 선택자 5</div>
+        <p>수도 선택자 파트 2 끝</p>
+    </section>
+</body>
+
+</html>

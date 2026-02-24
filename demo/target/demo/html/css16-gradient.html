@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>그라디언트</title>
+    <style>
+        /* 그라디언트 효과 : 두 색상 사이이의 변화를 보여준 효과 */
+        #grad1 {
+            height: 200px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: linear-gradient(red, yellow);
+            /* Standard syntax (must be last) */
+        }
+
+        #grad2 {
+            height: 200px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: linear-gradient(to right, red, yellow);
+        }
+
+        #grad3 {
+            height: 200px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: linear-gradient(to bottom right, red, yellow);
+        }
+
+        /* angle(각도를)을 이용한 그라디언트 효과 */
+        #grad4 {
+            height: 100px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: linear-gradient(0deg, red, yellow);
+        }
+
+        #grad5 {
+            height: 100px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: linear-gradient(90deg, red, yellow);
+        }
+
+        #grad6 {
+            height: 100px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: linear-gradient(180deg, red, yellow);
+        }
+
+        #grad7 {
+            height: 100px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: linear-gradient(-90deg, red, yellow);
+        }
+
+        /* 다중 색상 그라디언트  */
+        #grad8 {
+            height: 50px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+        }
+
+        /* radial-gradient */
+        #grad11 {
+            height: 300px;
+            width: 400px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: radial-gradient(red, yellow, green);
+            /* Standard syntax (must be last) */
+        }
+
+        /* 비율을 지정한 효과 */
+        #grad12 {
+            height: 300px;
+            width: 400px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: radial-gradient(red 5%, yellow 15%, green 60%);
+            /* Standard syntax (must be last) */
+        }
+
+        /* width, height를 이용한 다양한 원에 따른 효과 */
+        #grad13 {
+            height: 300px;
+            width: 400px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: radial-gradient(red, yellow, green);
+        }
+
+        /* 원형을 지정을 통해서 circle */
+        #grad14 {
+            height: 300px;
+            width: 400px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: radial-gradient(circle, red, yellow, green);
+        }
+
+        #grad15 {
+            height: 300px;
+            width: 300px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: radial-gradient(closest-side at 60% 55%, red, yellow, black);
+        }
+
+        #grad16 {
+            height: 300px;
+            width: 300px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: radial-gradient(farthest-side at 60% 55%, red, yellow, black);
+        }
+
+        #grad17 {
+            height: 300px;
+            width: 300px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: radial-gradient(closest-corner at 60% 55%, red, yellow, black);
+        }
+
+        #grad18 {
+            height: 300px;
+            width: 300px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: radial-gradient(farthest-corner at 60% 55%, red, yellow, black);
+        }
+
+        /* repeating-radial-gradient :반복 */
+        #grad19 {
+            height: 300px;
+            width: 400px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: repeating-radial-gradient(red, yellow 10%, green 15%);
+        }
+
+        #grad21 {
+            height: 55px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <h1>Linear Gradient</h1>
+
+        <h2>방향에 따른 설정</h2>
+        <div id="grad1"></div>
+        <div id="grad2"></div>
+        <div id="grad3"></div>
+
+        <h2>angle을 이용한 설정</h2>
+        <div id="grad4" style="text-align:center;">0deg</div>
+        <div id="grad5" style="text-align:center;">90deg</div>
+        <div id="grad6" style="text-align:center;">180deg</div>
+        <div id="grad7" style="text-align:center;">-90deg</div>
+
+        <h2>다중 색상 설정</h2>
+        <div id="grad8"
+            style="text-align:center;margin:auto;padding:25px;color:#888888;font-size:40px;font-weight:bold">
+            Rainbow Background
+        </div>
+
+    </div>
+    <hr>
+    <div>
+        <h1>Radial Gradients</h1>
+        <h2>기본 설정</h2>
+        <div id="grad11"></div>
+        <div id="grad12"></div>
+        <h2>모양 설정</h2>
+        <div id="grad13"></div>
+        <div id="grad14"></div>
+        <h2>closest-side/closest-corner</h2>
+        <div id="grad15"></div>
+        <div id="grad16"></div>
+        <h2>farthest-side/farthest-corner</h2>
+        <div id="grad17"></div>
+        <div id="grad18"></div>
+        <h2>반복 적용 설정</h2>
+        <div id="grad19"></div>
+    </div>
+    <hr>
+
+</body>
+
+</html>

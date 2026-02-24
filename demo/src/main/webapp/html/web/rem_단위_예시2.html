@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>rem 단위 예시 2</title>
+    <style>
+        body {
+            font-size: 14px;
+        }
+
+        p {
+            font-size: 1em;
+            line-height: 1.5em;
+        }
+
+        .box1 {
+            font-size: 20px;
+        }
+
+        .box1 p {
+            font-size: 1rem;
+            line-height: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <p> p 태그 내부의 폰트 크기는 1em입니다. 현재 body 태그의 폰트 사이즈를 14px로 정의 하였기 때문에 이 부분도 14px의 크기를 나타냅니다.
+    </p>
+    <div class="box1">
+        <p>
+            이 부분은 폰트 사이즈가 아직도 16px입니다. 이 부분은 계속해서 16px로 설정되는 것일까요? HTML 문서의 root 는 body가 아니라 html 태그입니다.
+        </p>
+    </div>
+</body>
+
+</html>
