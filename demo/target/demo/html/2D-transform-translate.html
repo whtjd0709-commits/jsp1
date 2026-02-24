@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2D transform:translate </title>
+    <style>
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            box-sizing: border-box;
+            padding: 20px;
+            transition: linear 0.5s;
+        }
+
+        .move {
+            transform: translate(220px, 200px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">박스 1</div>
+    <button class="mbtn">움직여라.</button>
+    <button class="rbtn">제자리로! </button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $("button.mbtn").on("click", function () {
+            $(".box1").addClass("move");
+        });
+        $("button.rbtn").on("click", function () {
+            $(".box1").removeClass("move");
+        });
+    </script>
+</body>
+
+</html>

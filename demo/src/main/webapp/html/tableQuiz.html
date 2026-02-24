@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+    <html lang="ko">
+        <head>
+            <meta charset="UTF-8">
+            <title>테이블 이용한 표 만들기</title>
+        </head>
+    <body>
+        <!-- 테이블 태그로 표 만들기 -->    
+        <!-- thead, tbody, tr, th, td -->
+        <table border="1">
+            <!-- tr 태그는 row(record - 데이터들) -->
+             <tr>
+                <!-- th 태그는 table header -->
+                <th>학번</th>
+                <th>이름</th>
+                <th>학과</th>
+                <th>이메일</th>
+             </tr>
+                <tr>
+                    <!-- td 태그는 table data -->
+                    <td style="text-align: center; color: blueviolet;">202301</td>
+                    <td>홍길동</td>
+                    <td>컴퓨터공학과</td>
+                    <td>hong@example.com</td>
+                </tr>
+                <tr>
+                    <td>202302</td>
+                    <td>김철수</td>
+                    <td>전자공학과</td>
+                    <td>kim@example.com</td>
+                </tr>
+                <tr>
+                    <td>202303</td>
+                    <td>이영희</td>
+                    <td>기계공학과</td>
+                    <td>lee@example.com</td>
+                </tr>
+                <tr>
+                    <td>202304</td>
+                    <td>박민수</td>
+                    <td>화학공학과</td>
+                    <td>park@example.com</td>
+                </tr>
+                <tr>
+                    <td>202305</td>
+                    <td>최지은</td>
+                    <td>생명공학과</td>
+                    <td>choi@example.com</td>
+                </tr>
+                <tr>
+                    <td>202306</td>
+                    <td>정우성</td>
+                    <td>토목공학과</td>
+                    <td>jeong@example.com</td>
+                </tr>
+            </table>
+        
+            <body>
+                <!-- 이력서 입력 폼 태그 만들기-->
+                 <h1>이력서 입력 폼</h1>
+
+    <form action="#" method="post">
+        <!-- 상단 기본 정보 섹션 (테이블 속성으로 너비와 테두리 조절) -->
+        <table border="1" width="600" cellspacing="0" cellpadding="8">
+            <tr>
+                <td rowspan="3" width="120" align="center">사진</td>
+                <th width="80" align="left">이름</th>
+                <td><input type="text" size="10"></td>
+                <th width="80" align="left">생년월일</th>
+                <td><input type="text" size="15"></td>
+            </tr>
+            <tr>
+                <th align="left">휴대폰</th>
+                <td colspan="3"><input type="tel" size="40"></td>
+            </tr>
+            <tr>
+                <th align="left">현주소</th>
+                <td><input type="text" size="15"></td>
+                <th align="left">이메일</th>
+                <td><input type="email" size="15"></td>
+            </tr>
+        </table>
+
+        <!-- 좋아하는 교과목 섹션 -->
+        <p>
+            <strong>좋아하는 교과목 :</strong><br>
+            <input type="checkbox" name="subject" value="java"> JAVA
+            <input type="checkbox" name="subject" value="database"> DATABASE
+            <input type="checkbox" name="subject" value="html_css"> HTML/CSS
+            <input type="checkbox" name="subject" value="spring"> SPRING
+            <input type="checkbox" name="subject" value="react_nextjs"> REACT/NEXTJS
+        </p>
+
+        <hr>
+
+        <!-- 상세 정보 입력 섹션 -->
+        <p>학력사항(졸업일/학교명/전공/졸업여부/소재지/성적)</p>
+        <textarea name="education" cols="80" rows="3"></textarea>
+
+        <hr>
+
+        <p>경력사항</p>
+        <textarea name="experience" cols="80" rows="3"></textarea>
+
+        <hr>
+
+        <p>자기 소개</p>
+        <textarea name="introduction" cols="80" rows="3"></textarea>
+
+        <hr>
+
+        <p>취미</p>
+        <input type="text" name="hobby" size="80">
+
+        <hr>
+
+        <!-- 버튼 섹션 -->
+        <div align="center">
+            <input type="submit" value="저장">
+            <input type="reset" value="취소">
+        </div>
+    </form>
+    </html>

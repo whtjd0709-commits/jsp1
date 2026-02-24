@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2D transform:translate </title>
+    <style>
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            box-sizing: border-box;
+            padding: 20px;
+            transition: linear 0.5s;
+        }
+
+        .move {
+            transform: translate(220px, 200px);
+        }
+
+        .box10 {
+            width: 200px;
+            height: 200px;
+            background-color: lightblue;
+            box-sizing: border-box;
+            padding: 20px;
+            transition: linear 0.5s;
+            margin: 100px;
+        }
+
+        .rotate1 {
+            transform: rotate3d(0, 0, 90, 180deg);
+        }
+
+        .rotate2 {
+            transform: rotate3d(0, 90, 0, 180deg);
+        }
+
+        .rotate3 {
+            transform: rotate3d(90, 0, 0, 180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">박스 1</div>
+    <button class="mbtn">움직여라.</button>
+    <button class="rbtn">제자리로! </button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $("button.mbtn").on("click", function () {
+            $(".box1").addClass("move");
+        });
+        $("button.rbtn").on("click", function () {
+            $(".box1").removeClass("move");
+        });
+    </script>
+    <hr>
+    <button class="mbtn1">3D 1</button>
+    <button class="mbtn2">3D 2</button>
+    <button class="mbtn3">3D 3</button>
+    <button class="rbtn">제자리로! </button>
+    <div class="box10">박스 모양을 보세요.</div>
+    <script>
+        $("button.mbtn1").on("click", function () {
+            $(".box10").addClass("rotate1");
+        });
+        $("button.mbtn2").on("click", function () {
+            $(".box10").addClass("rotate2");
+        });
+        $("button.mbtn3").on("click", function () {
+            $(".box10").addClass("rotate3");
+        });
+        $("button.rbtn").on("click",
+            function () {
+                $(".box10").removeClass('rotate1 rotate2 rotate3')
+            });
+    </script>
+</body>
+
+</html>

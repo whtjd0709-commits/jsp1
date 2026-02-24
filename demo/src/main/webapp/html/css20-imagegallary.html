@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        div.gallery {
+            border: 1px solid #ccc;
+        }
+
+        div.gallery:hover {
+            border: 1px solid #777;
+        }
+
+        div.gallery img {
+            width: 100%;
+            height: auto;
+        }
+
+        div.desc {
+            padding: 15px;
+            text-align: center;
+        }
+
+
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /*
+            => box 태그 사이즈에 맞춰서
+            */
+
+        .responsive {
+            padding: 0 6px;
+            float: left;
+            width: 24.99999%;
+        }
+
+        /*
+            반응형으로 전체 화면 사이즈에 맞게 표현... 
+
+            =========반응형 페이지 설정(media quaries) ===========
+            @media only screen and (max-width: 700px) {
+                .responsive {
+                    width: 49.99999%;
+                    margin: 6px 0;
+            }
+            }
+            => 화면이 700px 미만인 경우에 사이즈 변경 약 24.9% -> 49.9%
+
+            @media only screen and (max-width: 500px) {
+                .responsive {
+                    width: 100%;
+                }
+            => 화면이 500px 미만인 경우에 사이즈 변경 49.9% => 100%
+            
+
+            ==================================
+            }
+            */
+
+        .clearfix:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Image Gallery</h2>
+    <h4>화면에 따라서 이미지의 사이즈 조정됨</h4>
+
+    <div class="responsive">
+        <div class="gallery">
+            <a target="_blank" href="../images/img_5terre.jpg">
+                <img src="../images/img_5terre.jpg" alt="Cinque Terre" width="600" height="400">
+            </a>
+            <div class="desc">해안가 절벽 이미지</div>
+        </div>
+    </div>
+
+
+    <div class="responsive">
+        <div class="gallery">
+            <a target="_blank" href="../images/img_forest.jpg">
+                <img src="../images/img_forest.jpg" alt="Forest" width="600" height="400">
+            </a>
+            <div class="desc">숲속의 다리</div>
+        </div>
+    </div>
+
+    <div class="responsive">
+        <div class="gallery">
+            <a target="_blank" href="../images/img_lights.jpg">
+                <img src="../images/img_lights.jpg" alt="Northern Lights" width="600" height="400">
+            </a>
+            <div class="desc">북극의 오로라</div>
+        </div>
+    </div>
+
+    <div class="responsive">
+        <div class="gallery">
+            <a target="_blank" href="../images/img_mountains.jpg">
+                <img src="../images/img_mountains.jpg" alt="Mountains" width="600" height="400">
+            </a>
+            <div class="desc">산 속에 있는 호수</div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div style="padding:6px;">
+        <p>이 예제는 갤러리를 위한 예제로 화면의 사이즈에 맞게 갤러리 이미지의 사이즈가 변경됩니다. 나중에 추가로 media query와 연계하면 다양한 형태로 표현될 수 있습니다.</p>
+        <p>이런 내용은 나중에 반응형 웹에서 추가로 배우게 됩니다.</p>
+    </div>
+
+</body>
+
+</html>

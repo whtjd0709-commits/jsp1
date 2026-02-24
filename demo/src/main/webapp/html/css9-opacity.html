@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang='ko'>
+
+<head>
+    <meta character='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>투명도 설정</title>
+    <style>
+        img {
+            opacity: 0.5;
+        }
+
+        img:hover {
+            opacity: 1.0;
+        }
+
+        .box1,
+        .box2,
+        .box3,
+        .box4 {
+            width: 100%;
+            height: 50px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .box1 {
+            background-color: rgba(255, 0, 0, 0.1);
+        }
+
+        .box2 {
+            background-color: rgba(255, 0, 0, 0.3);
+        }
+
+        .box3 {
+            background-color: rgba(255, 0, 0, 0.5);
+        }
+
+        .box4 {
+            background-color: rgba(255, 0, 0, 1.0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>이미지 투명도</h1>
+    <p>투명도 속성 값을 낮게 두면 보다 투명한 색상으로 표현됨:</p>
+
+    <p>50% 투명도 설정:</p>
+    <img src="\images\image-back.jpg" alt="Forest" width="360" height="240">
+    <img src="\images\image-back2.jpg" alt="Forest" width="360" height="240">
+    <img src="\images\image-back3.jpg" alt="Forest" width="360" height="240">
+    <div class="box1">투명도 10%</div>
+    <div class="box2">투명도 30%</div>
+    <div class="box3">투명도 50%</div>
+    <div class="box4">투명도 100%</div>
+
+</body>
+
+</html>

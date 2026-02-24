@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>사용자로부터 데이터 입력받는 form 태그</title>
+    </head>
+    <body>
+        <!-- 시멘틱 태그를 사용한 예시 -->
+        <!-- form 태그는 데이터를 서버로 전송하는 역할을 한다  /
+            속성 : action(데이터를 전송할 서버의 URL), method(GET, POST) / 
+            HTTP 메서드
+                GET : URL에 데이터를 포함시켜 전송(보안에 취약, 길이제한)
+                POST : 데이터가 본문에 포함되어 전송(보안에 강함, 길이제한 없음) 
+        -->
+        
+        <!-- form 태그와 데이터를 처리하는 태그들...-->
+        <!-- 회원가입 양식-->
+        아이디 : <input type="text" name="userid"><br>
+        비밀번호 : <input type="password" name="userpw"><br>
+        이메일 : <input type="email" name="email"><br>
+        관심분야 :
+        <input type="checkbox" name="interest" value="sports">스포츠
+        <input type="checkbox" name="interest" value="music">음악
+        <input type="checkbox" name="interest" value="movies">영화<br>
+        전공 :
+        <input type="radio" name="major" value="computer">컴퓨터공학
+        <input type="radio" name="major" value="business">경영학
+        <input type="radio" name="major" value="design">디자인<br>
+        생년월일 : <input type="date" name="birthdate"><br>
+        자기소개 : <br>
+        <textarea name="introduction" rows="5" cols="30"></textarea><br
+>       
+        <select name="" id="">
+            <option value="option1">옵션1</option>
+            <option value="option2">옵션2</option>
+            <option value="option3">옵션3</option>
+        </select><br>
+
+        <input type="submit" value="가입하기">
+        <input type="reset" value="다시작성">
+
+
+
+    </body>
+</html>

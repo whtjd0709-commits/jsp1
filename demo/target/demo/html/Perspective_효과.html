@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Perspective 효과 </title>
+    <style>
+        #box1 {
+            position: relative;
+        }
+
+        .boxp {
+            background-color: lightblue;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            box-sizing: border-box;
+            padding: 20px;
+            margin: 100px;
+            transition: linear 0.5s;
+        }
+
+        .effect1 {
+            perspective: 150;
+            -webkit-perspective: 150;
+            perspective-origin: 50% 50%;
+        }
+
+        .effect2 {
+            -webkit-transform-style: preserve-3d;
+            /* Safari 3-8 */
+            -webkit-transform: rotateY(45deg);
+            /* Safari 3-8 */
+            transform-style: preserve-3d;
+            transform: rotateY(45deg);
+        }
+
+        .effect3 {
+            -webkit-transform-style: preserve-3d;
+            /* Safari 3-8 */
+            -webkit-transform: rotateX(45deg);
+            /* Safari 3-8 */
+            transform-style: preserve-3d;
+            transform: rotateX(45deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1">
+        <div class="boxp">
+            원근감 효과
+        </div>
+    </div>
+    <button class="yp">원근감 Y </button>
+    <button class="xp">원근감 X </button>
+    <button class="reset">제자리 </button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $("button.yp").on("click", function () {
+            $("#box1").addClass("effect1");
+            $(".boxp").addClass("effect2");
+        });
+        $("button.xp").on("click",
+            function () {
+                $("#box1").addClass("effect1");
+                $(".boxp").addClass("effect3");
+            });
+        $("button.reset").on("click", function () {
+            $("#box1").removeClass("effect1");
+            $(".boxp").removeClass("effect2 effect3");
+        });
+    </script>
+</body>
+
+</html>

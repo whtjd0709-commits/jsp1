@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>1. 테이블 만들기</title>
+</head>
+
+            <style> 
+            /* CSS 주석처리*/
+
+            table{
+                border-collapse : collapse; 
+                border-width: 3px; /*두께*/
+                border-style: solid; /*스타일*/
+                border-color: black; /*색상*/
+                width: 80%; /*표시화면 80%만 */
+                text-align: center;
+
+                /* 합치는 것도 가능 */
+                border: 3px solid black;
+            }
+            tr{
+                height: 24px; /*tr의 높이 설정*/
+                font-size: 14px; /*글자크기*/
+            }
+            tr:hover{
+                color: white;
+                font-weight: bold;
+                background-color: aqua;
+                cursor: pointer;
+            }
+            th{
+                height: 25px; /* tr의 24가 적용 X 값이 중복인 경우 마지막놈이 적용*/
+                font-size:16px;
+                background-color: aliceblue;
+            }
+
+            /* id 선택자 : # */
+            #id {width: 15%;}
+            #name {width:10%;}
+            #major{width:25%;}
+            #email{width: 50%;}
+
+            /*class는 .을*/
+            .odd {
+                background-color: beige;
+            }
+            </style>
+
+<body>
+    <h2>학생정보 테이블 </h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th width="20%">학번</th>
+                <th width="10%">이름</th>
+                <th width="30%">학과</th>
+                <th width="40%">이메일</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td align="center">202601</td>
+                <td align="center">홍길동</td>
+                <td align="center">체육학과</td>
+                <td align="center">hong@naver.com</td>
+            </tr>
+            <tr class="odd">
+                <td align="center">202602</td>
+                <td align="center">이순신</td>
+                <td align="center">해양학과</td>
+                <td align="center">lee@naver.com</td>
+            </tr>
+            <tr>
+                <td align="center">202603</td>
+                <td align="center">강감찬</td>
+                <td align="center">정치외교</td>
+                <td align="center">kang@naver.com</td>
+            </tr>
+            <tr class="odd">
+                <td align="center">202604</td>
+                <td align="center">유관순</td>
+                <td align="center">유아교육</td>
+                <td align="center">yougs@naver.com</td>
+            </tr>
+            <tr class="odd">
+                <td align="center">202605</td>
+                <td align="center">정약용</td>
+                <td align="center">물리화학</td>
+                <td align="center">jungyy@naver.com</td>
+            </tr>
+            <tr>
+                <td align="center">202606</td>
+                <td align="center">유성룡</td>
+                <td align="center">행정학과</td>
+                <td align="center">ryusy@naver.com</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

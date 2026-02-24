@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>선택자1</title>
+        <style>
+            /*전체 선택자 사용 : 모든 선택지의 margin, padding을 0을 설정*/
+            *{
+                margin: 0;
+            }
+            footer{
+                height: 80px;
+                background-color: aliceblue;
+                padding: 10px;
+            }
+
+            /* 하위 선택자 : header div 태그의 설정 */
+            header div{
+                float: right;
+                font-size: 1.8rem;
+            }
+
+            header ul li{
+                display: inline-block;
+            }
+            article{
+                background-color: aliceblue;
+            }
+            /*하위 선택자와 자식 선택자 차이*/
+            article section li{
+                color: red;
+            }
+            div.logo{
+                color: brown;
+                font-size: 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>선택자 사용 예제</h1>
+        <!-- 시멘틱 태그 : header, article, section, aside, footer...-->
+        
+        <header>
+            <div class="logo">로고</div>
+            <ul>
+                <li>메뉴1</li>
+                <li>메뉴2</li>
+            </ul>
+        </header>
+        <article>
+            <h1>제목1</h1>
+            <section>
+                <h2>부제목1</h2>
+                <ul>
+                    <li>리스트1</li>
+                    <li>리스트2</li>
+                    <li>리스트3</li>
+                </ul>
+            </section>
+            <aside>
+                <h2>사이드바 제목</h2>
+                <section>
+                    <li>사이드 메뉴 1</li>
+                    <li>사이드 메뉴 2</li>
+                    <li>사이드 메뉴 3</li>
+                </section>
+            </aside>
+        </article>
+        
+        <footer>
+            푸터 부분
+        </footer>
+
+    </body>
+</html>

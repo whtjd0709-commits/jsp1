@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Skew 속성 </title>
+    <style>
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background-color: lightblue;
+            box-sizing: border-box;
+            padding: 20px;
+            transition: linear 0.5s;
+            margin: 100px;
+        }
+
+        .rotate1 {
+            transform: skew(45deg);
+            transform-origin: 50% 50%;
+        }
+
+        .rotate2 {
+            transform: skew(32deg);
+            transform-origin: 0 0;
+        }
+
+        .rotate3 {
+            transform: skew(-45deg);
+            transform-origin: 100% 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="mbtn1">스큐 1</button>
+    <button class="mbtn2">스큐 2</button>
+    <button class="mbtn3">스큐 3</button>
+    <button class="rbtn">제자리로! </button>
+    <div class="box1">박스 모양을 보세요.</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $("button.mbtn1").on("click", function () {
+            $(".box1").addClass("rotate1");
+        });
+        $("button.mbtn2").on("click", function () {
+            $(".box1").addClass("rotate2");
+        });
+        $("button.mbtn3").on("click", function () {
+            $(".box1").addClass("rotate3");
+        });
+        $("button.rbtn").on("click",
+            function () {
+                $(".box1").removeClass('rotate1 rotate2 rotate3')
+            });
+    </script>
+</body>
+
+</html>

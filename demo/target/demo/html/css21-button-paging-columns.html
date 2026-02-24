@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .button2 {
+            background-color: #008CBA;
+        }
+
+        /* Blue */
+        .button3 {
+            background-color: #f44336;
+        }
+
+        /* Red */
+        .button4 {
+            background-color: #e7e7e7;
+            color: black;
+        }
+
+        /* Gray */
+        .button5 {
+            background-color: #555555;
+        }
+
+        /* Black */
+
+        .button11 {
+            font-size: 10px;
+        }
+
+        .button12 {
+            font-size: 12px;
+        }
+
+        .button13 {
+            font-size: 16px;
+        }
+
+        .button14 {
+            font-size: 20px;
+        }
+
+        .button15 {
+            font-size: 24px;
+        }
+
+        .button21 {
+            border-radius: 2px;
+        }
+
+        .button22 {
+            border-radius: 4px;
+        }
+
+        .button23 {
+            border-radius: 8px;
+        }
+
+        .button24 {
+            border-radius: 12px;
+        }
+
+        .button25 {
+            border-radius: 50%;
+        }
+
+
+        .button31 {
+            background-color: white;
+            color: black;
+            border: 2px solid #4CAF50;
+            transition-duration: 1s;
+        }
+
+        .button31:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .button32 {
+            background-color: white;
+            color: black;
+            border: 2px solid #008CBA;
+            transition-duration: 1s;
+        }
+
+        .button32:hover {
+            background-color: #008CBA;
+            color: white;
+        }
+
+        .button33 {
+            background-color: white;
+            color: black;
+            border: 2px solid #f44336;
+            transition-duration: 1s;
+        }
+
+        .button33:hover {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .button34 {
+            background-color: white;
+            color: black;
+            border: 2px solid #e7e7e7;
+            transition-duration: 1s;
+        }
+
+        .button34:hover {
+            background-color: #e7e7e7;
+        }
+
+        .button35 {
+            background-color: white;
+            color: black;
+            border: 2px solid #555555;
+            transition-duration: 1s;
+        }
+
+        .button35:hover {
+            background-color: #555555;
+            color: white;
+        }
+
+
+        .pagination {
+            display: inline-block;
+        }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+        .pagination1 {
+            display: inline-block;
+        }
+
+        .pagination1 a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+        .pagination1 a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .pagination1 a:hover:not(.active) {
+            background-color: #ddd;
+        }
+
+        .pagination2 {
+            display: inline-block;
+        }
+
+        .pagination2 a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+        }
+
+        .pagination2 a.active {
+            background-color: #4CAF50;
+            color: white;
+            border: 1px solid #4CAF50;
+        }
+
+        .newspaper {
+            column-count: 3;
+            column-gap: 40px;
+            column-rule: 1px solid lightblue;
+        }
+
+        h3 {
+            column-span: all;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>CSS Buttons</h2>
+
+        <button>Default Button</button>
+        <a href="#" class="button">Link Button</a>
+        <button class="button">Button</button>
+        <input type="button" class="button" value="Input Button">
+
+        <h2>CSS Buttons에 색상처리</h2>
+        <p>버튼에 백그라운드 색성 처리(background-color 속성) </p>
+
+        <button class="button">Green</button>
+        <button class="button button2">Blue</button>
+        <button class="button button3">Red</button>
+        <button class="button button4">Gray</button>
+        <button class="button button5">Black</button>
+
+
+        <h2>CSS Button 크기 변화</h2>
+        <p>버튼의 font사이즈를 변경하여 버튼의 크기를 조절(font-size 속성)</p>
+
+        <button class="button button11">10px</button>
+        <button class="button button2 button12">12px</button>
+        <button class="button button3 button13">16px</button>
+        <button class="button button4 button14">20px</button>
+        <button class="button button5 button15">24px</button>
+
+
+        <h2>CSS Buttons 라운드 처리</h2>
+        <p>버튼의 코너에 라운드 처리(border-radius 속성)</p>
+
+        <button class="button button21">2px</button>
+        <button class="button button2 button22">4px</button>
+        <button class="button button3 button23">8px</button>
+        <button class="button button4 button24">12px</button>
+        <button class="button button5 button25">50%</button>
+
+
+        <h2>CSS Buttons hover를 이용한 방식</h2>
+        <p> :hover 선택자를 사용하여 마우스 올렸을 때에 변경되는 버튼</p>
+        <p><strong>참고:</strong> transition-duration 속성을 사용하면, 변경시간을 조절</p>
+
+        <button class="button button31">Green</button>
+        <button class="button button32">Blue</button>
+        <button class="button button33">Red</button>
+        <button class="button button34">Gray</button>
+        <button class="button button35">Black</button>
+    </div>
+    <div>
+        <h2>심플한 페이지매김</h2>
+
+        <div class="pagination">
+            <a href="#">&laquo;</a>
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="#">&raquo;</a>
+        </div>
+
+        <h2>active클래스와 hover를 이용한 페이지매김</h2>
+        <p>active클래스인 경우와 마우스를 가져 놓으면 차이가 생김</p>
+
+        <div class="pagination1">
+            <a href="#">&laquo;</a>
+            <a href="#">1</a>
+            <a class="active" href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="#">&raquo;</a>
+        </div>
+
+        <h2>border를 이용한 페이지매김</h2>
+
+        <div class="pagination2">
+            <a href="#">&laquo;</a>
+            <a href="#">1</a>
+            <a href="#" class="active">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="#">&raquo;</a>
+        </div>
+    </div>
+
+    <div>
+        <h2>multiple columns</h2>
+        <div class="newspaper">
+            <h3>시인 윤동주</h3>
+            윤동주(한국 한자: 尹東柱, 1917년 12월 30일 ~ 1945년 2월 16일)는 일제 강점기 한국의 독립운동가, 시인이자 작가이다. 본관은 파평(坡平). 중화민국 지린성 룽징시 (용정시)
+            명동촌에서 출생하여 명동학교에서 수학하였고, 평양 숭실중학교와 서울 연희전문학교를 졸업하였다. 연희전문학교 2학년 재학 중 소년(少年) 지에 시를 발표하며 정식으로 문단에 등단했다.
+
+            일본에 건너가 1942년 교토 도시샤 대학에 입학 1943년 항일운동을 했다는 혐의로 일본 경찰에 체포되어 후쿠오카 형무소(福岡刑務所)에 투옥, 100여 편의 시를 남기고 27세의 나이에
+            옥중에서 요절하였다. 사인이 일본의 소금물 생체실험이라는 견해가 있고 그의 사후 일본군에 의한 마루타, 생체실험설이 제기되었으나 불확실하다. 사후에 그의 시집 《하늘과 바람과 별과 시》가
+            출간되었다.
+
+            일제 강점기 후반의 양심적 지식인의 한 사람으로 인정받았으며, 그의 시는 일제와 조선총독부에 대한 비판과 자아성찰 등을 소재로 하였다. 고종사촌형인 송몽규 역시 독립운동에 가담하려다가 체포되어
+            일제의 생체 실험 대상자로 분류되어 의문의 죽음을 맞는다. 그의 창씨개명 '히라누마'가 알려져 1990년대 후반 이후 논란이 일기도 했다. 본명 외에 동주(童柱)와 윤주(尹柱)라는 필명도
+            사용하였다
+        </div>
+
+    </div>
+</body>
+
+</html>

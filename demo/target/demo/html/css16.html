@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>그라디언트</title>
+    <style>
+        #grad1 {
+            height: 200px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: linear-gradient(red, yellow);
+            /* Standard syntax (must be last) */
+        }
+
+        #grad2 {
+            height: 200px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: linear-gradient(to right, red, yellow);
+        }
+
+        #grad3 {
+            height: 200px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: linear-gradient(to bottom right, red, yellow);
+        }
+
+        #grad4 {
+            height: 100px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: linear-gradient(0deg, red, yellow);
+        }
+
+        #grad5 {
+            height: 100px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: linear-gradient(90deg, red, yellow);
+        }
+
+        #grad6 {
+            height: 100px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: linear-gradient(180deg, red, yellow);
+        }
+
+        #grad7 {
+            height: 100px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: linear-gradient(-90deg, red, yellow);
+        }
+
+        #grad8 {
+            height: 50px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+        }
+
+        #grad11 {
+            height: 300px;
+            width: 400px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: radial-gradient(red, yellow, green);
+            /* Standard syntax (must be last) */
+        }
+
+        #grad12 {
+            height: 300px;
+            width: 400px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: radial-gradient(red 5%, yellow 15%, green 60%);
+            /* Standard syntax (must be last) */
+        }
+
+        #grad13 {
+            height: 300px;
+            width: 400px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: radial-gradient(red, yellow, green);
+        }
+
+        #grad14 {
+            height: 300px;
+            width: 400px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: radial-gradient(circle, red, yellow, green);
+        }
+
+        #grad15 {
+            height: 300px;
+            width: 300px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: radial-gradient(closest-side at 60% 55%, red, yellow, black);
+        }
+
+        #grad16 {
+            height: 300px;
+            width: 300px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: radial-gradient(farthest-side at 60% 55%, red, yellow, black);
+        }
+
+        #grad17 {
+            height: 300px;
+            width: 300px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: radial-gradient(closest-corner at 60% 55%, red, yellow, black);
+        }
+
+        #grad18 {
+            height: 300px;
+            width: 300px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: radial-gradient(farthest-corner at 60% 55%, red, yellow, black);
+        }
+
+        #grad19 {
+            height: 300px;
+            width: 400px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: repeating-radial-gradient(red, yellow 10%, green 15%);
+        }
+
+        #grad21 {
+            height: 55px;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <h1>Linear Gradient</h1>
+
+        <h2>방향에 따른 설정</h2>
+        <div id="grad1"></div>
+        <div id="grad2"></div>
+        <div id="grad3"></div>
+
+        <h2>angle을 이용한 설정</h2>
+        <div id="grad4" style="text-align:center;">0deg</div>
+        <div id="grad5" style="text-align:center;">90deg</div>
+        <div id="grad6" style="text-align:center;">180deg</div>
+        <div id="grad7" style="text-align:center;">-90deg</div>
+
+        <h2>다중 색상 설정</h2>
+        <div id="grad8"
+            style="text-align:center;margin:auto;padding:25px;color:#888888;font-size:40px;font-weight:bold">
+            Rainbow Background
+        </div>
+
+    </div>
+    <hr>
+    <div>
+        <h1>Radial Gradients</h1>
+        <h2>기본 설정</h2>
+        <div id="grad11"></div>
+        <div id="grad12"></div>
+        <h2>모양 설정</h2>
+        <div id="grad13"></div>
+        <div id="grad14"></div>
+        <h2>closest-side/closest-corner</h2>
+        <div id="grad15"></div>
+        <div id="grad16"></div>
+        <h2>farthest-side/farthest-corner</h2>
+        <div id="grad17"></div>
+        <div id="grad18"></div>
+        <h2>반복 적용 설정</h2>
+        <div id="grad19"></div>
+    </div>
+    <hr>
+
+    <div>
+        <h1>레인보우 그라디언트</h1>
+        <div id="grad21" style="text-align:center;margin:auto;color:#888888;font-size:40px;font-weight:bold">
+            Rainbow Background
+        </div>
+    </div>
+
+</body>
+
+</html>

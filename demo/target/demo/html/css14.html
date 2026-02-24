@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+#borderimg1 { 
+  border: 10px solid transparent;
+  padding: 15px;
+  border-image: url(../images/border.png) 30 round;
+}
+
+#borderimg2 { 
+  border: 10px solid transparent;
+  padding: 15px;
+  border-image: url(../images/border.png) 30 stretch;
+}
+
+        /* Rounded-corner demo boxes (IDs used in the HTML below) */
+        #rcorners1 {
+            border-radius: 15px 50px 30px 5px;
+            background: #73AD21;
+            padding: 20px;
+            width: 200px;
+            height: 150px;
+            color: #fff;
+            box-sizing: border-box;
+        }
+
+        #rcorners2 {
+            border-radius: 15px 50px 30px;
+            background: #73AD21;
+            padding: 20px;
+            width: 200px;
+            height: 150px;
+            color: #fff;
+            box-sizing: border-box;
+        }
+
+        #rcorners3 {
+            border-radius: 15px 50px;
+            background: #73AD21;
+            padding: 20px;
+            width: 200px;
+            height: 150px;
+            color: #fff;
+            box-sizing: border-box;
+        }
+
+        #rcorners4 {
+            border-radius: 15px;
+            background: #73AD21;
+            padding: 20px;
+            width: 200px;
+            height: 150px;
+            color: #fff;
+            box-sizing: border-box;
+        }
+
+        /* A few extra examples (optional) */
+        #rcorners100 { border-radius: 50px / 15px; background: #4a8a17; padding: 20px; width:200px; height:150px; color:#fff; box-sizing:border-box; }
+        #rcorners200 { border-radius: 15px / 50px; background: #2f6f12; padding: 20px; width:200px; height:150px; color:#fff; box-sizing:border-box; }
+        #rcorners300 { border-radius: 50%; background: #1f4f0d; padding: 20px; width:200px; height:150px; color:#fff; box-sizing:border-box; }
+</style>
+</head>
+<body>
+
+<h1>The border-image Property</h1>
+
+<p>Here, the middle sections of the image are repeated to create the border:</p>
+<p id="borderimg1">border-image: url(border.png) 30 round;</p>
+
+<p>Here, the middle sections of the image are repeated to create the border:</p>
+<p id="borderimg2">border-image: url(border.png) 30 round;</p>
+
+<p>Here is the original image:</p><img src="../images/border.png" alt="border image">
+<p><strong>Note:</strong> Internet Explorer 10, and earlier versions, do not support the border-image property.</p>
+
+<p id="borderimg1">border-image: url(../images/border.png) 50 round;</p>
+<p id="borderimg2">border-image: url(../images/border.png) 20% round;</p>
+<p id="borderimg3">border-image: url(../images/border.png) 30% round;</p>
+
+<p>Four values - border-radius: 15px 50px 30px 5px:</p>
+<div id="rcorners1">15px 50px 30px 5px</div>
+
+<p>Three values - border-radius: 15px 50px 30px:</p>
+<div id="rcorners2">15px 50px 30px</div>
+
+<p>Two values - border-radius: 15px 50px:</p>
+<div id="rcorners3">15px 50px</div>
+
+<p>One value - border-radius: 15px:</p>
+<div id="rcorners4">15px</div>
+
+<p>Other examples:</p>
+<div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
+  <div id="rcorners100">50px / 15px</div>
+  <div id="rcorners200">15px / 50px</div>
+  <div id="rcorners300">50%</div>
+</div>
+
+</body>
+</html>

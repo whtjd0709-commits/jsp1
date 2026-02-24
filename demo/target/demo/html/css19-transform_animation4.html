@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>애니메이션 예제 1 </title>
+    <style>
+        .box1 {
+            margin: 10px;
+            width: 200px;
+            height: 100px;
+            border: 1px solid #666;
+            background-color: #CCC;
+            text-align: center;
+            padding-top: 25px;
+            position: relative;
+            /* 박스의 이동을 위해서 position 설정 */
+        }
+
+        .animate {
+            animation: changecolor 5s;
+        }
+
+        @keyframes changecolor {
+            0% {
+                background-color: #FC0;
+                top: 0px;
+                left: 0px;
+                color: white
+            }
+
+            25% {
+                background-color: #3CF;
+                top: 100px;
+                left: 100px;
+                color: red
+            }
+
+            50% {
+                background-color: #C96;
+                top: 200px;
+                left: 100px;
+                color: blue
+            }
+
+            75% {
+                background-color: #0CF;
+                top: 300px;
+                left: 50px;
+                color: pink
+            }
+
+            100% {
+                background-color: #666;
+                top: 0px;
+                left: 0px;
+                color: white
+            }
+        }
+
+        .box10 {
+            margin: 10px;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #666;
+            background-color: #CCC;
+            position: relative;
+        }
+
+        .animate10 {
+            animation-name: jump;
+            /* 설정 된 애니메이션 이름 */
+            animation-duration: 2s;
+            /* 3초 동안 애니메이션 실행(여기 숫자가 짧으면 애니메이션이 빨라집니다. 반대로 숫자가 크면
+애니메이션이 느려지게 됩니다. */
+            animation-play-state: running;
+            /* 애니메이션 자동 실행 */
+            animation-iteration-count: infinite;
+            /* 애니메이션 무한 반복 */
+            animation-timing-function: cubic-bezier(.43, .49, .48, .49);
+            /*베지어 곡선을 이용한 애니메이션 효과 */
+
+        }
+
+        .box10:hover {
+            animation-play-state: paused;
+            /* 마우스 오버시 애니메이션 중지 */
+        }
+
+        /* 아래의 값은 %에 따른 효과 적용 */
+
+        @keyframes jump {
+            0% {
+                transform: translateY(0px);
+            }
+
+            25% {
+                transform: translateY(150px);
+                border-radius: 25%;
+                background-color: pink;
+            }
+
+            50% {
+                transform: translateY(300px);
+                border-radius: 50%;
+                background-color: blue;
+            }
+
+            75% {
+                transform: translateY(150px);
+                border-radius: 25%;
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .ground {
+            border-top: 1px solid black;
+            position: relative;
+            top: 289px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">
+        애니메이션!!!
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(".box1").click(function () {
+            $(this).toggleClass("animate");
+        });
+    </script>
+    <hr>
+    <button>GO!</button>
+    <div class="box10"></div>
+    <div class="ground"></div>
+    <script>
+        $("button").on("click", function () {
+            $(".box10").addClass("animate10");
+        });
+    </script>
+</body>
+
+</html>

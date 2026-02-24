@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 미디어 작업</title>
+</head>
+<body>
+    <h1>HTML5 미디어 작업</h1>
+    <p>HTML5에서는 오디오와 비디오를 쉽게 삽입할 수 있는 태그가 도입되었습니다.</p>
+    <!-- HTML5 기본적으로 지원하는 포맷 : mp3, mp4, ogg -->
+
+    <!-- Video -->
+
+    <h2>비디오 태그</h2>
+    <video width="320" height="240" controls> <!-- controls : 재생 컨트롤러 표시 -->
+        <source src="./video/mov_bbb.mp4" type="video/mp4"> <!-- 1 -->
+        <source src="./video/mov_bbb.ogv" type="video/ogg"> <!-- 2 -->
+        브라우저가 비디오 태그를 지원하지 않습니다. <!-- 대체 텍스트 -->
+    </video> 
+
+    <video width="320" height="240" autoplay muted loop> <!-- autoplay : 자동재생, muted : 음소거, loop : 반복재생 -->
+        <source src="./video/mov_bbb.mp4" type="video/mp4"> <!-- 1 -->
+        <source src="./video/mov_bbb.ogv" type="video/ogg"> <!-- 2 -->
+        브라우저가 비디오 태그를 지원하지 않습니다. <!-- 대체 텍스트 -->
+    </video>
+
+
+    <!-- Audio -->
+    <h2>오디오 태그</h2>
+    <audio controls>
+        <source src="./audio/sample1.mp3" type="audio/mpeg"> <!-- 1 -->
+        <source src="./audio/sample1.ogg" type="audio/ogg"> <!-- 2 -->
+        브라우저가 오디오 태그를 지원하지 않습니다. <!-- 대체 텍스트 -->
+    </audio>
+
+    <hr>
+    <h2>youtube 영상 보기</h2>
+    <!--
+        frame 태그 종류 : iframe, object, embed
+        youtube 영상 삽입 방법 : iframe 사용
+    -->
+<iframe width="700" height="450" src="https://www.youtube.com/embed/C3GouGa0noM?list=RDC3GouGa0noM"
+ title="GODS (ft. 뉴진스) (공식 뮤직 비디오) | 2023 월드 챔피언십 주제곡 - 리그 오브 레전드"
+frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</body>
+</html>
