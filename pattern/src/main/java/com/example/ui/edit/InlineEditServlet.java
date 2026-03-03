@@ -18,16 +18,16 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 
 @WebServlet("/patterns/p1-edit")
-public class InlineEditServlet extends HttpServlet{
+public class InlineEditServlet extends HttpServlet {
 
-    // DB를 구성해서 작업해도 되지만, 여기서는 인메모리 형태로 저장소 처리를 하겠어요. 
+    // DB를 구성해서 작업해도 되지만, 여기서는 인메모리 형태로 저장소 처리를 하겠어요.
     private static final ConcurrentHashMap<Long, Member> repository = new ConcurrentHashMap<>();
 
     // 서블릿 초기시 동작: 초기화
     @Override
     public void init() throws ServletException {
         // 서블릿이 생성되었을 최초의 사용자를 추가를 진행하려고 함(샘플 데이터 생성)
-        repository.put(1L, new Member(1L, "홍길동", "hong@test.com", "Admin"));
+        repository.put(1L, Member.of(1L, "홍길동", "hong@test.com", "Admin"));
     }
 
     // 메서드 GET일때,
@@ -35,23 +35,24 @@ public class InlineEditServlet extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 모드별 연결하는 뷰를 달리 둘 수 있어요. 모드 정보는 "action" 파라미터로 결정
         // 1. 파라미터 값 불러오기
-        String action = req.getParameter("action");       // action이 edit라면 편집으로 이외는 view 모드
-        Long id = Long.parseLong(req.getParameter("id")); // 수정시/보여줄 때,  넘겨받을 아이디
+        String action = req.getParameter("action"); // action이 edit라면 편집으로 이외는 view 모드
+        Long id = Long.parseLong(req.getParameter("id")); // 수정시/보여줄 때, 넘겨받을 아이디
         // 2. 저장소에 있는 정보를 불러옴
-        Member member = repository.get(id);            // 위에 선언되어 있는 repository에서 key가 id값을 불러옴
+        Member member = repository.get(id); // 위에 선언되어 있는 repository에서 key가 id값을 불러옴
 
         // 3. 모드별로 전달할 정보를 request 객체에 저장
         req.setAttribute("member", member);
 
         // 4. action 값에 따른 view 선택 작업(포워드 처리)
-        if ("edit".equals(action)) {   // Edit 모드
+        if ("edit".equals(action)) { // Edit 모드
             // 편집 모드 조각을 반환
             req.getRequestDispatcher("/WEB-INF/fragments/edit/edit-form.jsp").forward(req, resp);
-        }else {   // View 모드
+        } else { // View 모드
             // 상세 보기 모드 조각 반환
             req.getRequestDispatcher("/WEB-INF/fragments/edit/display.jsp").forward(req, resp);
         }
     }
+
     // 메서드 POST일때,
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -62,7 +63,7 @@ public class InlineEditServlet extends HttpServlet{
         String email = req.getParameter("email");
         String auth = req.getParameter("auth");
 
-        // 2. 유효성 검사. 
+        // 2. 유효성 검사.
         if (name == null || name.isBlank() || email == null || !email.contains("@")) {
             // 예외 발생 처리
             resp.setStatus(422);
@@ -70,8 +71,8 @@ public class InlineEditServlet extends HttpServlet{
             req.getRequestDispatcher("/WEB-INF/fragments/common/error-alert.jsp").forward(req, resp);
             return;
         }
-        // 3. 데이터 업데이트 
-        Member updateMember = new Member(id, name, email, auth);
+        // 3. 데이터 업데이트
+        Member updateMember = Member.of(id, name, email, auth);
         repository.put(id, updateMember);
         // 4. 업데이트 처리후 보기 모드로 전환(포워드)
         req.setAttribute("member", updateMember);

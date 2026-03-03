@@ -1,18 +1,21 @@
 package com.example.ui.common;
 
-import java.sql.Timestamp;
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
-public record Member( 
-    Long id,
-    String name,
-    String email,
-    String auth,
-    String status,
-    Timestamp createAt
-) {
-    // 4개만 받아도 6개짜리 기본 생성자를 호출해주는 '보조 생성자' 추가
-    public Member(Long id, String name, String email, String auth) {
-        this(id, name, email, auth, null, null); 
-        // status와 createAt 자리에 null을 넣어 6개를 채워줌
+public record Member(
+        Long id,
+        String name,
+        String email,
+        String auth,
+        String status,
+        LocalDateTime createdAt) implements Serializable {
+
+    public static Member of(Long id, String name, String email, String auth) {
+        return new Member(id, name, email, auth, "Acitve", LocalDateTime.now());
+    }
+
+    public Member withName(String newName) {
+        return new Member(this.id, newName, this.email, this.auth, this.status, this.createdAt);
     }
 }
