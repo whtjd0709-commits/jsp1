@@ -29,7 +29,7 @@ pageEncoding="UTF-8"%>
             <h2>리다이렉트 로그인 연습</h2>
             <hr>
 
-            <form action="res_login_ok.jsp" method="post">
+            <form action="/checklogin.do" method="post">
                 <table border="1">
                     <tr>  <!-- rowspan, colspan 사용 -->
                         <td><input type="text" name="id" placeholder="아이디"></td>

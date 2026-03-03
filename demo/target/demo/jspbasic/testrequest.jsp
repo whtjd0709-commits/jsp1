@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="java.util.*"%>
 <%--
 JSP 내장 객체
 1. request (O) -> HTTPServletRequest
@@ -48,7 +47,7 @@ request 객체가 가지고 있는 메서드
     String id = request.getParameter("id");
     String pw = request.getParameter("pw");
     String name = request.getParameter("name");
-    String address = request.getParameter("addr");
+    String addr = request.getParameter("addr");
     // checkbox는 getParameterValues메서드을 활용합니다. 왜? 여러개의 값을 하나의 name으로 전달하기 때문에
     String[] checkboxs = request.getParameterValues("intro");
     String major = request.getParameter("major");
@@ -72,7 +71,7 @@ request 객체가 가지고 있는 메서드
         아이디 : <%=id %><br>
         비밀번호 : <%=pw %><br>
         이름 : <%=name %><br>
-        주소 : <%=address %><br>
+        주소 : <%=addr %><br>
         관심분야 : <%=Arrays.toString(checkboxs) %><br>
         전공 : <%=major %><br>
         통신사 : <%=phone %><br>

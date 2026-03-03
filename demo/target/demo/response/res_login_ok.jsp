@@ -5,7 +5,7 @@ pageEncoding="UTF-8"%>
     /*
     login.jsp 에서 전달받은 값을 처리....
     // utf-8 인코딩(한글 사용시)
-    request.setCharatorEncoding('utf-8')
+    request.setCharacterEncoding("utf-8");
     
     <가정>
     id : abc1234
