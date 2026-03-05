@@ -1,0 +1,4 @@
+com\example\crm\controller\CrmServlet.class
+com\example\crm\service\MemverService.class
+com\example\crm\model\MemberRecord.class
+com\example\crm\repository\MemberRepository.class
